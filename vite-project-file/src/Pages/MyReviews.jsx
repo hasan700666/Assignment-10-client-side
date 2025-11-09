@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Layout = () => {
+const MyReviews = () => {
     return (
         <div>
-            i am layout
+            iama review
         </div>
     );
 };
 
-export default Layout;
+export default MyReviews;

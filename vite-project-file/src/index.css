@@ -1,2 +1,86 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+/* font */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+
+*{
+    background-color: #ffeded;
+    font-family: "Archivo Black", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* button */
+
+.button_css {
+ padding: 10px 20px;
+ border: unset;
+ border-radius: 15px;
+ color: #ffff;
+ z-index: 1;
+ background: #bf1e2e;
+ position: relative;
+ font-size: 17px;
+ transition: all 250ms;
+ overflow: hidden;
+}
+
+.button_css::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 100%;
+ width: 0;
+ border-radius: 15px;
+ background-color: #ffff;
+ z-index: -1;
+ transition: all 250ms
+}
+
+.button_css:hover {
+ color: #bf1e2e;
+  background-color: #ffff;
+}
+
+.button_css:hover::before {
+ width: 100%;
+}
+
+
+/* navlinks */
+
+.card_css {
+  backdrop-filter: blur(6px);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+  border: none;
+  border-radius: 17px;
+}
+
+.card_css:hover {
+    border-radius: 17px;
+    padding: 3px 15px;
+    border: 1px solid #bf1e2e;
+    transform: scale(1);
+}
+
+.card_css:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+#NavLink_css > a.active{
+    border: 2px solid #bf1e2e;
+    padding: 3px 10px;
+}
