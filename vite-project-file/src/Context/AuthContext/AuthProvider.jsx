@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebaseConfig";
@@ -24,6 +25,9 @@ const AuthProvider = ({ children }) => {
     return signOut(auth)
   }
 
+  const SIngInByGoogle()={
+    signInWithPopup()
+  }
 
   const MonitoringUser = () => {
     onAuthStateChanged(auth, (User) => {
