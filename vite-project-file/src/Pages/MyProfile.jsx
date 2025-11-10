@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AuthProvider = () => {
+const MyProfile = () => {
     return (
         <div>
-            
+            i am muy profile
         </div>
     );
 };
 
-export default AuthProvider;
+export default MyProfile;

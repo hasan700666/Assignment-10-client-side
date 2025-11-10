@@ -8,10 +8,18 @@
 
 
 *{
-    background-color: #ffeded;
+    
     font-family: "Archivo Black", sans-serif;
   font-weight: 800;
   font-style: normal;
+}
+
+.bg_css{
+  background-color: #ffeded;
+}
+
+.rounded_css{
+  border-radius: 15px;
 }
 
 /* button */
@@ -83,4 +91,28 @@
 #NavLink_css > a.active{
     border: 2px solid #bf1e2e;
     padding: 3px 10px;
+}
+
+/* google */
+
+.google_btn {
+ padding: 10px 20px;
+ border: unset;
+ border-radius: 15px;
+ color: black;
+ z-index: 1;
+ background: white;
+ position: relative;
+ font-size: 17px;
+ transition: all 250ms;
+ overflow: hidden;
+}
+
+
+.google_btn:hover {
+ color: #bf1e2e;
+}
+
+.google_btn:hover::before {
+ width: 100%;
 }
