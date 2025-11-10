@@ -6,9 +6,12 @@ import { FaEye } from "react-icons/fa";
 import { NavLink } from "react-router";
 import img from "../assets/images/logo.png";
 import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 
 const Login = () => {
-  const { SingUser,MonitoringUser } = use(AuthContext);
+  const { SingUser, MonitoringUser, SingInByGoogle,} = use(AuthContext);
   const [sow, setSow] = useState(false);
 
   const notify = () => toast("Here is your toast.");
@@ -19,14 +22,13 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log(email,password);
-    
+    console.log(email, password);
 
     SingUser(email, password)
       .then((userCredential) => {
         // Signed in
         console.log(userCredential);
-        MonitoringUser()
+        MonitoringUser();
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -36,6 +38,17 @@ const Login = () => {
 
   const hendleSow = () => {
     setSow(!sow);
+  };
+
+  const hendleGoogleSingIn = () => {
+    SingInByGoogle(provider)
+      .then((result) => {
+        console.log(result);
+        MonitoringUser()
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -91,7 +104,10 @@ const Login = () => {
                   </button>
                 </fieldset>
               </form>
-              <button className="btn btn-neutral google_btn">
+              <button
+                className="btn btn-neutral google_btn"
+                onClick={hendleGoogleSingIn}
+              >
                 <FcGoogle />
                 Login with Google
               </button>

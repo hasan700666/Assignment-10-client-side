@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebaseConfig";
 import { AuthContext } from "./AuthContext";
-import { GoogleAuthProvider } from "firebase/auth";
+
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -21,13 +21,13 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const SingOut = ()=>{
-    return signOut(auth)
-  }
+  const SingOut = () => {
+    return signOut(auth);
+  };
 
-  const SIngInByGoogle()={
-    signInWithPopup()
-  }
+  const SingInByGoogle = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
 
   const MonitoringUser = () => {
     onAuthStateChanged(auth, (User) => {
@@ -48,6 +48,7 @@ const AuthProvider = ({ children }) => {
     SingUser,
     MonitoringUser,
     SingOut,
+    SingInByGoogle,
   };
 
   return (

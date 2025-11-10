@@ -6,9 +6,12 @@ import { NavLink } from "react-router";
 import img from "../assets/images/logo.png";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 
 const Register = () => {
-  const { CreateUser,MonitoringUser } = use(AuthContext);
+  const { CreateUser, MonitoringUser, SingInByGoogle } = use(AuthContext);
 
   const [sow, setSow] = useState(false);
 
@@ -30,11 +33,22 @@ const Register = () => {
       .then((userCredential) => {
         // Signed up
         console.log(userCredential);
-        MonitoringUser()
+        MonitoringUser();
       })
       .catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage);
+      });
+  };
+
+  const hendleGoogleSingIn = () => {
+    SingInByGoogle(provider)
+      .then((result) => {
+        console.log(result);
+        MonitoringUser();
+      })
+      .catch((error) => {
+        console.log(error.message);
       });
   };
 
@@ -96,7 +110,10 @@ const Register = () => {
                   </button>
                 </fieldset>
               </form>
-              <button className="btn btn-neutral google_btn">
+              <button
+                className="btn btn-neutral google_btn"
+                onClick={hendleGoogleSingIn}
+              >
                 <FcGoogle />
                 Login with Google
               </button>
