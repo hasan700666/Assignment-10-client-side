@@ -34,6 +34,7 @@ const Register = () => {
         // Signed up
         console.log(userCredential);
         MonitoringUser();
+        notify();
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -46,6 +47,7 @@ const Register = () => {
       .then((result) => {
         console.log(result);
         MonitoringUser();
+        notify();
       })
       .catch((error) => {
         console.log(error.message);
@@ -53,84 +55,89 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div>
       <div>
-        <img src={img} alt="" />
+        <Toaster />
       </div>
-      <div className="m-10">
-        <div className="flex-col lg:flex-row-reverse ">
-          <div className="card w-full shrink-0 shadow-2xl bg_css">
-            <div className="card-body bg_css rounded_css pb-15">
-              <form onSubmit={hendleSubmit}>
-                {" "}
-                <fieldset className="fieldset">
-                  <h1 className="text-5xl font-bold m-10 text-center">
-                    Register now!
-                  </h1>
-                  <label className="label">Name</label>
-                  <input
-                    type="text"
-                    className="input w-full rounded_css"
-                    placeholder="Name"
-                    name="name"
-                  />
-                  <label className="label">Email</label>
-                  <input
-                    type="email"
-                    className="input w-full rounded_css"
-                    placeholder="Email"
-                    name="email"
-                  />
-                  <label className="label">Photo-URL</label>
-                  <input
-                    type=""
-                    className="input w-full rounded_css"
-                    placeholder="Photo-URL"
-                    name="photo"
-                  />
-                  <label className="label">Password</label>
-
-                  <div className="flex justify-between">
+      <div className="flex justify-center items-center">
+        <div>
+          <img src={img} alt="" />
+        </div>
+        <div className="m-10">
+          <div className="flex-col lg:flex-row-reverse ">
+            <div className="card w-full shrink-0 shadow-2xl bg_css">
+              <div className="card-body bg_css rounded_css pb-15">
+                <form onSubmit={hendleSubmit}>
+                  {" "}
+                  <fieldset className="fieldset">
+                    <h1 className="text-5xl font-bold m-10 text-center">
+                      Register now!
+                    </h1>
+                    <label className="label">Name</label>
                     <input
-                      type={sow ? "text" : "password"}
+                      type="text"
                       className="input w-full rounded_css"
-                      placeholder="Password"
-                      name="password"
+                      placeholder="Name"
+                      name="name"
                     />
-                    <button
-                      className="button_css rounded_css"
-                      type="button"
-                      onClick={hendleSow}
-                    >
-                      {sow ? <FaEyeSlash /> : <FaEye />}
+                    <label className="label">Email</label>
+                    <input
+                      type="email"
+                      className="input w-full rounded_css"
+                      placeholder="Email"
+                      name="email"
+                    />
+                    <label className="label">Photo-URL</label>
+                    <input
+                      type=""
+                      className="input w-full rounded_css"
+                      placeholder="Photo-URL"
+                      name="photo"
+                    />
+                    <label className="label">Password</label>
+
+                    <div className="flex justify-between">
+                      <input
+                        type={sow ? "text" : "password"}
+                        className="input w-full rounded_css"
+                        placeholder="Password"
+                        name="password"
+                      />
+                      <button
+                        className="button_css rounded_css"
+                        type="button"
+                        onClick={hendleSow}
+                      >
+                        {sow ? <FaEyeSlash /> : <FaEye />}
+                      </button>
+                    </div>
+                    <button className="btn btn-neutral mt-4 button_css">
+                      Register
                     </button>
-                  </div>
-                  <button className="btn btn-neutral mt-4 button_css">
-                    Register
-                  </button>
-                </fieldset>
-              </form>
-              <button
-                className="btn btn-neutral google_btn"
-                onClick={hendleGoogleSingIn}
-              >
-                <FcGoogle />
-                Login with Google
-              </button>
-              <div className="flex justify-center items-center flex-col mt-5">
-                Already have an account?{" "}
-                <NavLink to="/LogIn">
-                  <div className="button_css text-[] font-bold mt-3">
-                    Log in
-                  </div>
-                </NavLink>
+                  </fieldset>
+                </form>
+                <button
+                  className="btn btn-neutral google_btn"
+                  onClick={hendleGoogleSingIn}
+                >
+                  <FcGoogle />
+                  Login with Google
+                </button>
+                <div className="flex justify-center items-center flex-col mt-5">
+                  Already have an account?{" "}
+                  <NavLink to="/LogIn">
+                    <div className="button_css text-[] font-bold mt-3">
+                      Log in
+                    </div>
+                  </NavLink>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <img src={img} alt="" />
+        <div>
+          <img src={img} alt="" />
+        </div>
       </div>
     </div>
   );

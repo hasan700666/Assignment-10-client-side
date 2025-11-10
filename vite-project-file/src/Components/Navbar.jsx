@@ -1,10 +1,11 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import img from "../assets/images/logo.png";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
 
 const Navbar = () => {
   const { user, SingOut, MonitoringUser } = use(AuthContext);
+  const [btn, setbtn] = useState(false);
 
   const li = (
     <>
@@ -31,12 +32,19 @@ const Navbar = () => {
       .then(() => {
         // Sign-out successful.
         MonitoringUser();
+        console.log("sing out");
       })
       .catch((error) => {
         // An error happened.
         console.log(error.message);
       });
   };
+
+  const btn_click = () => {
+    setbtn(!btn);
+  };
+
+
 
   return (
     <div>
@@ -83,10 +91,36 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <img src={img} alt="" className="w-10 mx-3" />
-              <button className="button_css" onClick={hendleSingOut}>
-                Sing out
-              </button>
+              <div className="flex items-center justify-center">
+                <div className="dropdown dropdown-end">
+                  <button className="profile_css mx-5" onClick={btn_click}>
+                    <img
+                      src={user?.photoURL}
+                      alt=""
+                      className=""
+                      tabIndex={0}
+                      role="button"
+                    />
+                  </button>
+                  <ul
+                    tabIndex="-1"
+                    className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                  >
+                    <NavLink to="/MyProfile">
+                      <li className="card_css my-1">My Profile</li>
+                    </NavLink>
+                    <NavLink to="/AddReview">
+                      <li className="card_css my-1">Add Review</li>
+                    </NavLink>
+                    <NavLink to="/MyReviews">
+                      <li className="card_css my-1">My Reviews</li>
+                    </NavLink>
+                    <li className="card_css my-1 hover:bg-[#bf1e2e] hover:text-white" onClick={hendleSingOut}>
+                      Sing out
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </>
           ) : (
             <>

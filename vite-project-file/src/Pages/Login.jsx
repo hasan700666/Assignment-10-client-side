@@ -29,6 +29,7 @@ const Login = () => {
         // Signed in
         console.log(userCredential);
         MonitoringUser();
+        notify()
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -45,6 +46,7 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         MonitoringUser()
+        notify()
       })
       .catch((error) => {
         console.log(error.message);

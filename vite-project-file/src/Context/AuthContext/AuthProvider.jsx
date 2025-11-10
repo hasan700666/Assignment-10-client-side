@@ -5,10 +5,10 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebaseConfig";
 import { AuthContext } from "./AuthContext";
-
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -27,6 +27,13 @@ const AuthProvider = ({ children }) => {
 
   const SingInByGoogle = (provider) => {
     return signInWithPopup(auth, provider);
+  };
+
+  const UpdateUser = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
 
   const MonitoringUser = () => {
@@ -49,6 +56,7 @@ const AuthProvider = ({ children }) => {
     MonitoringUser,
     SingOut,
     SingInByGoogle,
+    UpdateUser,
   };
 
   return (
