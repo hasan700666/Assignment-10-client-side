@@ -1,39 +1,67 @@
-import React from "react";
+import React, { use } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
-import { NavLink, useNavigate } from "react-router";
+import { data, NavLink, useNavigate } from "react-router";
 import img from "../assets/images/logo.png";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const AddReview = () => {
+  const { user } = use(AuthContext);
+
+  console.log(user);
+
   const hendleSubmit = (e) => {
     e.preventDefault();
 
     const name = e.target.name.value;
-    const photo = e.target.photo.value;
+    const photo = e.target.photo_url.value;
     const restaurant_name = e.target.restaurant_name.value;
     const location = e.target.location.value;
     const bio = e.target.bio.value;
     const ster = e.target.rating_10.value;
 
-    //console.log(ster);
-
-
     if (
       name == false ||
       photo == false ||
       restaurant_name == false ||
-      location == false || 
-      bio == false  || 
+      location == false ||
+      bio == false ||
       ster == false
     ) {
       return toast.error("All fields are required");
     }
 
-    
+    const dock = {
+      foodName: e.target.name.value,
+      foodImage: e.target.photo_url.value,
+      restaurantName: e.target.restaurant_name.value,
+      location: e.target.location.value,
+      reviewText: e.target.bio.value,
+      starRating: e.target.rating_10.value,
+      userEmail: user.email,
+      userName: user.displayName,
+      date: new Date(),
+    };
+
+    console.log(dock);
+
+    fetch("http://localhost:3000/foodCollection", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dock),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return (
@@ -68,6 +96,12 @@ const AddReview = () => {
                         type="file"
                         className="file-input rounded-2xl w-full"
                         name="photo"
+                      />
+                      <input
+                        type="text"
+                        className="input w-full rounded_css"
+                        placeholder="Enter Your Restaurant Name"
+                        name="photo_url"
                       />
                       <label className="label">Restaurant Name</label>
                       <input

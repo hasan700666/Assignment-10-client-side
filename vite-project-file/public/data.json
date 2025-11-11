@@ -1,0 +1,112 @@
+[
+  {
+    "foodName": "Beef Burger",
+    "foodImage": "https://www.gardenersdream.co.uk/cdn/shop/articles/Snake_Plant_1_f6204179-d92b-40e3-bec7-0d3a61e93b81.jpg?v=1744013002",
+    "restaurantName": "Burger Hub",
+    "location": "Banani, Dhaka",
+    "starRating": 4,
+    "reviewText": "Juicy burger with fresh buns. Fries could be better but overall tasty!",
+    "userEmail": "foodlover01@example.com",
+    "userName": "Arafat Hossain",
+    "date": "2025-11-10T14:20:00Z"
+  },
+  {
+    "foodName": "Chicken Biriyani",
+    "foodImage": "https://www.houseplant.co.uk/cdn/shop/files/DSC00503.jpg?v=1724921257&width=1946",
+    "restaurantName": "Royal Dine",
+    "location": "Dhanmondi, Dhaka",
+    "starRating": 5,
+    "reviewText": "Rich spices, tender chicken, and amazing aroma!",
+    "userEmail": "maliha@example.com",
+    "userName": "Maliha Rahman",
+    "date": "2025-11-11T13:00:00Z"
+  },
+  {
+    "foodName": "Fuchka",
+    "foodImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Raven_ZZ_Zamioculcas_Dowon_1.jpg/250px-Raven_ZZ_Zamioculcas_Dowon_1.jpg",
+    "restaurantName": "Street Spice",
+    "location": "New Market, Dhaka",
+    "starRating": 5,
+    "reviewText": "Crispy and spicy with perfect tok pani!",
+    "userEmail": "rahim@example.com",
+    "userName": "Rahim Uddin",
+    "date": "2025-11-09T18:45:00Z"
+  },
+  {
+    "foodName": "Iced Coffee",
+    "foodImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3wqXrqCimeaAjuGB2N9-11eCKy6zp8mbeRw&s",
+    "restaurantName": "Cafe Aurora",
+    "location": "Mirpur, Dhaka",
+    "starRating": 4,
+    "reviewText": "Smooth and chilled. Very refreshing!",
+    "userEmail": "tasnim@example.com",
+    "userName": "Tasnim Jahan",
+    "date": "2025-11-08T11:10:00Z"
+  },
+  {
+    "foodName": "Chicken Shawarma",
+    "foodImage": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRPabN-U0XI2nKDOutgvxz-CDTeDMOUO40IHUNWSGgEEtrBIgcj41DVL8h4cIMYlxkZxs5qav2w3tJdGSzJGUjJzdmaGfA4iUE763LNgsIg",
+    "restaurantName": "Shawarma House",
+    "location": "Uttara, Dhaka",
+    "starRating": 5,
+    "reviewText": "Loaded with chicken and delicious garlic sauce!",
+    "userEmail": "kamal@example.com",
+    "userName": "Kamal Ahmed",
+    "date": "2025-11-07T17:30:00Z"
+  },
+  {
+    "foodName": "Pizza Margherita",
+    "foodImage":  "https://www.gardendesign.com/pictures/images/900x705Max/site_3/chinese-evergreen-plant-aglaonema-shutterstock-com_15962.jpg",
+    "restaurantName": "Pizza Time",
+    "location": "Gulshan, Dhaka",
+    "starRating": 4,
+    "reviewText": "Cheesy and soft, great for pizza lovers!",
+    "userEmail": "arisha@example.com",
+    "userName": "Arisha Noor",
+    "date": "2025-11-06T20:00:00Z"
+  },
+  {
+    "foodName": "Pasta Alfredo",
+    "foodImage": "https://shop-static.arborday.org/media/0004362_tineke-variegated-rubber-tree_510.jpeg",
+    "restaurantName": "Italiano Kitchen",
+    "location": "Mohakhali, Dhaka",
+    "starRating": 4,
+    "reviewText": "Creamy and flavorful. Loved the portion size!",
+    "userEmail": "sadi@example.com",
+    "userName": "Sadi Hasan",
+    "date": "2025-11-05T15:25:00Z"
+  },
+  {
+    "foodName": "Thai Soup",
+    "foodImage": "http://i0.wp.com/gachwala.in/wp-content/uploads/2022/06/IMAGE-1-13.webp?fit=1500%2C1500&ssl=1",
+    "restaurantName": "Asian Fusion",
+    "location": "Bashundhara, Dhaka",
+    "starRating": 5,
+    "reviewText": "Perfect spice level and very comforting!",
+    "userEmail": "mehjabin@example.com",
+    "userName": "Mehjabin Akter",
+    "date": "2025-11-04T14:40:00Z"
+  },
+  {
+    "foodName": "Grilled Chicken",
+    "foodImage": "https://green-bubble.com/cdn/shop/files/img-6031_2ca25e2b-2c40-4b81-9f1e-7a396b3b59ac_1920x.jpg?v=1725440103",
+    "restaurantName": "Grill Master",
+    "location": "Farmgate, Dhaka",
+    "starRating": 4,
+    "reviewText": "Smoky flavor, soft meat. Loved it!",
+    "userEmail": "nayeem@example.com",
+    "userName": "Nayeem Islam",
+    "date": "2025-11-03T19:15:00Z"
+  },
+  {
+    "foodName": "Mango Juice",
+    "foodImage":  "https://www.adairs.com.au/cdn-cgi/image/fit=scale-down,quality=85,format=auto,width=800/globalassets/13.-ecommerce/03.-product-images/2024_images/homewares/plants-stems--bouquets/57507_green_01.jpg",
+    "restaurantName": "Fresh Corner",
+    "location": "Rampura, Dhaka",
+    "starRating": 5,
+    "reviewText": "Fresh, sweet, and tastes like real mango!",
+    "userEmail": "sumaiya@example.com",
+    "userName": "Sumaiya Akter",
+    "date": "2025-11-02T10:50:00Z"
+  }
+]
