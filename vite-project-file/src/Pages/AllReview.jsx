@@ -1,9 +1,9 @@
 import React, { use } from "react";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
 import { useLoaderData } from "react-router";
-import HomeCard from "../Components/HomeCard";
+import Card from "../Components/Card";
 
-const Home = () => {
+const AllReview = () => {
   const data = useLoaderData();
 
   console.log(data);
@@ -19,9 +19,11 @@ const Home = () => {
   }
   return (
     <div>
-      {data.map((data) => <HomeCard data={data}></HomeCard>)}
+      {data.map((data) => (
+        <Card data={data}></Card>
+      ))}
     </div>
   );
 };
 
-export default Home;
+export default AllReview;

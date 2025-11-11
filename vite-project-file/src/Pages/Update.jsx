@@ -1,17 +1,15 @@
 import React, { use } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import { FaEyeSlash } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
-import { data, NavLink, useNavigate } from "react-router";
 import img from "../assets/images/logo.png";
-import { FcGoogle } from "react-icons/fc";
+import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
-import { GoogleAuthProvider } from "firebase/auth";
+import { data, useLoaderData } from "react-router";
 
-const AddReview = () => {
+const Update = () => {
+  const data = useLoaderData();
+
+  console.log(data);
+
   const { user } = use(AuthContext);
-
-  //console.log(user);
 
   const hendleSubmit = (e) => {
     e.preventDefault();
@@ -46,10 +44,10 @@ const AddReview = () => {
       date: new Date(),
     };
 
-    //console.log(dock);
+    console.log(dock);
 
-    fetch("http://localhost:3000/foodCollection", {
-      method: "POST",
+    fetch(`http://localhost:3000/foodCollection/${data._id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -64,7 +62,6 @@ const AddReview = () => {
         console.log(e);
       });
   };
-
   return (
     <div>
       <div>
@@ -83,7 +80,7 @@ const AddReview = () => {
                     {" "}
                     <fieldset className="fieldset">
                       <h1 className="text-5xl font-bold m-10 text-center">
-                        Add Foods Now!
+                        Update Foods Now!
                       </h1>
                       <label className="label">Food Name</label>
                       <input
@@ -91,6 +88,7 @@ const AddReview = () => {
                         className="input w-full rounded_css"
                         placeholder="Enter Your Food Name"
                         name="name"
+                        defaultValue={data.foodName}
                       />
                       <label className="label">Food Photo</label>
                       <input
@@ -103,6 +101,7 @@ const AddReview = () => {
                         className="input w-full rounded_css"
                         placeholder="Enter Your Restaurant Name"
                         name="photo_url"
+                        defaultValue={data.foodImage}
                       />
                       <label className="label">Restaurant Name</label>
                       <input
@@ -110,6 +109,7 @@ const AddReview = () => {
                         className="input w-full rounded_css"
                         placeholder="Enter Your Restaurant Name"
                         name="restaurant_name"
+                        defaultValue={data.restaurantName}
                       />
                       <label className="label">Location</label>
                       <input
@@ -117,12 +117,14 @@ const AddReview = () => {
                         className="input w-full rounded_css"
                         placeholder="Enter The Location Of Restaurant"
                         name="location"
+                        defaultValue={data.location}
                       />
                       <label className="label">Review Text</label>
                       <textarea
                         className="textarea w-full h-32"
                         placeholder="Enter Your Review"
                         name="bio"
+                        defaultValue={data.reviewText}
                       ></textarea>
                       <label className="label">Star Rating</label>
                       <div>
@@ -132,6 +134,7 @@ const AddReview = () => {
                             name="rating_10"
                             className="rating-hidden"
                             aria-label="clear"
+                            defaultValue={data.starRating}
                           />
                           <input
                             type="radio"
@@ -139,6 +142,7 @@ const AddReview = () => {
                             className="mask mask-star-2"
                             aria-label="1 star"
                             value="1"
+                            defaultValue={data.starRating}
                           />
                           <input
                             type="radio"
@@ -146,6 +150,7 @@ const AddReview = () => {
                             className="mask mask-star-2"
                             aria-label="2 star"
                             value="2"
+                            defaultValue={data.starRating}
                           />
                           <input
                             type="radio"
@@ -153,6 +158,7 @@ const AddReview = () => {
                             className="mask mask-star-2"
                             aria-label="3 star"
                             value="3"
+                            defaultValue={data.starRating}
                           />
                           <input
                             type="radio"
@@ -160,6 +166,7 @@ const AddReview = () => {
                             className="mask mask-star-2"
                             aria-label="4 star"
                             value="4"
+                            defaultValue={data.starRating}
                           />
                           <input
                             type="radio"
@@ -167,6 +174,7 @@ const AddReview = () => {
                             className="mask mask-star-2"
                             aria-label="5 star"
                             value="5"
+                            defaultValue={data.starRating}
                           />
                         </div>
                       </div>
@@ -188,4 +196,4 @@ const AddReview = () => {
   );
 };
 
-export default AddReview;
+export default Update;

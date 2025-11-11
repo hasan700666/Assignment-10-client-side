@@ -5,10 +5,11 @@ import AddReview from "../Pages/AddReview";
 import MyReviews from "../Pages/MyReviews";
 import FoodDetails from "../Pages/FoodDetails";
 import MyProfile from "../Pages/MyProfile";
-import AllFoods from "../Pages/AllFoods";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import ProtectedRoute from "../Components/ProtectedRoute";
+import AllReview from "../Pages/AllReview";
+import Update from "../Pages/Update";
 
 export const router = createBrowserRouter([
   {
@@ -29,8 +30,9 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/AllFoods",
-        Component: AllFoods,
+        path: "/AllReview",
+        Component: AllReview,
+        loader: () => fetch("http://localhost:3000/foodCollection"),
       },
       {
         path: "/MyProfile",
@@ -41,12 +43,13 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/MyReviews",
+        path: "/MyReviews/:email",
         element: (
           <ProtectedRoute>
             <MyReviews></MyReviews>
           </ProtectedRoute>
         ),
+        loader: ({params})=>fetch(`http://localhost:3000/foodCollection?email=${params.email}`)
       },
       {
         path: "/foodDetails",
@@ -63,6 +66,15 @@ export const router = createBrowserRouter([
       {
         path: "/LogIn",
         Component: Login,
+      },
+      {
+        path: "/Update/:id",
+        element: (
+          <ProtectedRoute>
+            <Update></Update>
+          </ProtectedRoute>
+        ),
+        loader: ({params})=>fetch(`http://localhost:3000/foodCollection/${params.id}`)
       },
     ],
   },

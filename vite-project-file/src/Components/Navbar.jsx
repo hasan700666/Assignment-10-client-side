@@ -12,8 +12,8 @@ const Navbar = () => {
       <NavLink to="/" className="mx-5 card_css ">
         Home
       </NavLink>
-      <NavLink to="/AllFoods" className="mx-5 card_css ">
-        All Foods
+      <NavLink to="/AllReview" className="mx-5 card_css ">
+        All Review
       </NavLink>
       <NavLink to="/MyProfile" className="mx-5 card_css ">
         My Profile
@@ -21,7 +21,7 @@ const Navbar = () => {
       <NavLink to="/AddReview" className="mx-5 card_css ">
         Add Reviews
       </NavLink>
-      <NavLink to="/MyReviews" className="mx-5 card_css ">
+      <NavLink to={`/MyReviews/${user?.email}`} className="mx-5 card_css ">
         My Reviews
       </NavLink>
     </>
