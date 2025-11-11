@@ -51,6 +51,7 @@ const AuthProvider = ({ children }) => {
       } else {
         //the user is sing out
         setUser(null);
+        setLoader(false)
       }
     });
 
