@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -12,6 +12,7 @@ import { AuthContext } from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
 
   const CreateUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -36,27 +37,38 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  const MonitoringUser = () => {
-    onAuthStateChanged(auth, (User) => {
-      if (User) {
+  const UpdateNamePhotos = (name, photo) => {
+    return setUser({ ...user, displayName: name, photoURL: photo });
+  };
+
+  useEffect(() => {
+    const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
         //the user is sing in
-        setUser(User);
-        console.log(User);
+        setUser(currentUser);
+        setLoader(false)
+        //console.log(currentUser);
       } else {
         //the user is sing out
         setUser(null);
       }
     });
-  };
+
+    return () => {
+      unsubcribe();
+    };
+  }, []);
 
   const authData = {
     CreateUser,
     user,
     SingUser,
-    MonitoringUser,
     SingOut,
     SingInByGoogle,
     UpdateUser,
+    setUser,
+    UpdateNamePhotos,
+    loader
   };
 
   return (

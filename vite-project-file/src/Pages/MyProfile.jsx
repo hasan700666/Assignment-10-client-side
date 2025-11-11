@@ -4,8 +4,14 @@ import { AuthContext } from "../Context/AuthContext/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 
 const MyProfile = () => {
-  const { SingUser, MonitoringUser, SingInByGoogle, user, UpdateUser } =
-    use(AuthContext);
+  const {
+    SingUser,
+    setUser,
+    SingInByGoogle,
+    user,
+    UpdateUser,
+    UpdateNamePhotos,
+  } = use(AuthContext);
   const [Update, setUpdate] = useState(false);
 
   const notify = () => toast("Here is your toast.");
@@ -23,17 +29,16 @@ const MyProfile = () => {
     UpdateUser(name, photo)
       .then((result) => {
         // Profile updated!
-        console.log(result);
-        MonitoringUser();
+        //console.log(result);
+        UpdateNamePhotos(name, photo);
         notify();
       })
       .catch((error) => {
         // An error occurred
         // ...
-        console.log(error.message);
+        //console.log(error.message);
       });
   };
-
 
   return (
     <div>

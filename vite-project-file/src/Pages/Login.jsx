@@ -3,7 +3,7 @@ import { AuthContext } from "../Context/AuthContext/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import img from "../assets/images/logo.png";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -11,10 +11,14 @@ import { GoogleAuthProvider } from "firebase/auth";
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
-  const { SingUser, MonitoringUser, SingInByGoogle,} = use(AuthContext);
+  const { SingUser, setUser, SingInByGoogle } = use(AuthContext);
   const [sow, setSow] = useState(false);
 
-  const notify = () => toast("Here is your toast.");
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  //console.log(location);
 
   const hendleSubmit = (e) => {
     e.preventDefault();
@@ -22,18 +26,22 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log(email, password);
+    if (email == false || password == false) {
+      return toast.error("All fields are required");
+    }
+
+    //console.log(email, password);
 
     SingUser(email, password)
       .then((userCredential) => {
         // Signed in
-        console.log(userCredential);
-        MonitoringUser();
-        notify()
+        //console.log(userCredential);
+        navigate(location.state || "/");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        //console.log(errorMessage);
+        toast.error("Error");
       });
   };
 
@@ -44,17 +52,20 @@ const Login = () => {
   const hendleGoogleSingIn = () => {
     SingInByGoogle(provider)
       .then((result) => {
-        console.log(result);
-        MonitoringUser()
-        notify()
+        //console.log(result);
+        navigate(location.state || "/");
       })
       .catch((error) => {
-        console.log(error.message);
+        //console.log(error.message);
+        toast.error("Error");
       });
   };
 
   return (
     <div className="flex justify-center items-center">
+      <div>
+        <Toaster />
+      </div>
       <div>
         <img src={img} alt="" />
       </div>

@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
 
 const Navbar = () => {
-  const { user, SingOut, MonitoringUser } = use(AuthContext);
+  const { user, SingOut, setUser } = use(AuthContext);
   const [btn, setbtn] = useState(false);
 
   const li = (
@@ -29,14 +29,14 @@ const Navbar = () => {
 
   const hendleSingOut = () => {
     SingOut()
-      .then(() => {
+      .then((res) => {
         // Sign-out successful.
-        MonitoringUser();
-        console.log("sing out");
+        setUser(res);
+        //console.log("sing out");
       })
       .catch((error) => {
         // An error happened.
-        console.log(error.message);
+        //console.log(error.message);
       });
   };
 
@@ -44,6 +44,9 @@ const Navbar = () => {
     setbtn(!btn);
   };
 
+  //console.log(user);
+  //console.log(user?.photoURL);
+  
 
 
   return (

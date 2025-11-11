@@ -8,6 +8,7 @@ import MyProfile from "../Pages/MyProfile";
 import AllFoods from "../Pages/AllFoods";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import ProtectedRoute from "../Components/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/AddReview",
-        Component: AddReview,
+        element: (
+          <ProtectedRoute>
+            <AddReview></AddReview>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/AllFoods",
@@ -28,15 +33,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/MyProfile",
-        Component: MyProfile,
+        element: (
+          <ProtectedRoute>
+            <MyProfile></MyProfile>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/MyReviews",
-        Component: MyReviews,
+        element: (
+          <ProtectedRoute>
+            <MyReviews></MyReviews>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/foodDetails",
-        Component: FoodDetails,
+        element: (
+          <ProtectedRoute>
+            <FoodDetails></FoodDetails>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/SingUp",
