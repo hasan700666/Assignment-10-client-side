@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 const MyReviewTable = ({ data }) => {
   const navigate = useNavigate();
 
-  console.log(data);
+  //console.log(data);
 
   const hendleUpdate = () => {
     navigate(`/Update/${data._id}`);
@@ -21,12 +21,12 @@ const MyReviewTable = ({ data }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         toast.success("Done");
         navigate(`/MyReviews/${data.userEmail}`);
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   };
 

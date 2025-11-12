@@ -10,6 +10,7 @@ import Login from "../Pages/Login";
 import ProtectedRoute from "../Components/ProtectedRoute";
 import AllReview from "../Pages/AllReview";
 import Update from "../Pages/Update";
+import MyFavorites from "../Pages/MyFavorites";
 
 export const router = createBrowserRouter([
   {
@@ -49,7 +50,8 @@ export const router = createBrowserRouter([
             <MyReviews></MyReviews>
           </ProtectedRoute>
         ),
-        loader: ({params})=>fetch(`http://localhost:3000/foodCollection?email=${params.email}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/foodCollection?email=${params.email}`),
       },
       {
         path: "/foodDetails",
@@ -74,7 +76,17 @@ export const router = createBrowserRouter([
             <Update></Update>
           </ProtectedRoute>
         ),
-        loader: ({params})=>fetch(`http://localhost:3000/foodCollection/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/foodCollection/${params.id}`),
+      },
+      {
+        path: "/MyFavorites/:email",
+        element: (
+          <ProtectedRoute>
+            <MyFavorites></MyFavorites>
+          </ProtectedRoute>
+        ),
+        loader: ({params})=>fetch(`http://localhost:3000/favoriteCollection?email=${params.email}`)
       },
     ],
   },

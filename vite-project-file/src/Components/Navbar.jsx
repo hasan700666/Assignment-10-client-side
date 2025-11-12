@@ -24,6 +24,9 @@ const Navbar = () => {
       <NavLink to={`/MyReviews/${user?.email}`} className="mx-5 card_css ">
         My Reviews
       </NavLink>
+      <NavLink to={`/MyFavorites/${user?.email}`} className="mx-5 card_css ">
+        My Favorites
+      </NavLink>
     </>
   );
 
@@ -46,8 +49,6 @@ const Navbar = () => {
 
   //console.log(user);
   //console.log(user?.photoURL);
-  
-
 
   return (
     <div>
@@ -118,7 +119,13 @@ const Navbar = () => {
                     <NavLink to="/MyReviews">
                       <li className="card_css my-1">My Reviews</li>
                     </NavLink>
-                    <li className="card_css my-1 hover:bg-[#bf1e2e] hover:text-white" onClick={hendleSingOut}>
+                    <NavLink to={`/MyFavorites/${user?.email}`}>
+                      <li className="card_css my-1">My Favorites</li>
+                    </NavLink>
+                    <li
+                      className="card_css my-1 hover:bg-[#bf1e2e] hover:text-white"
+                      onClick={hendleSingOut}
+                    >
                       Sing out
                     </li>
                   </ul>

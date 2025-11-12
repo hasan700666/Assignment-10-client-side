@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomeCard = ({data}) => {
 
-    console.log(data);
+    //console.log(data);
     
     return (
         <div>

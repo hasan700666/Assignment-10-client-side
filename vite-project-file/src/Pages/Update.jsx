@@ -7,7 +7,7 @@ import { data, useLoaderData } from "react-router";
 const Update = () => {
   const data = useLoaderData();
 
-  console.log(data);
+  //console.log(data);
 
   const { user } = use(AuthContext);
 
@@ -44,7 +44,7 @@ const Update = () => {
       date: new Date(),
     };
 
-    console.log(dock);
+    //console.log(dock);
 
     fetch(`http://localhost:3000/foodCollection/${data._id}`, {
       method: "PATCH",
@@ -55,11 +55,11 @@ const Update = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         toast.success("Done");
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   };
   return (

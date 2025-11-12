@@ -6,7 +6,7 @@ import Card from "../Components/Card";
 const AllReview = () => {
   const data = useLoaderData();
 
-  console.log(data);
+  //console.log(data);
 
   const { loader } = use(AuthContext);
 

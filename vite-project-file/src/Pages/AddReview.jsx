@@ -57,11 +57,11 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         toast.success("Done");
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   };
 
