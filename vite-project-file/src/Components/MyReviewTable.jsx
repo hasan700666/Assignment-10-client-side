@@ -6,21 +6,21 @@ import toast, { Toaster } from "react-hot-toast";
 const MyReviewTable = ({ data }) => {
   const navigate = useNavigate();
 
-  //console.log(data);
+  console.log(data.userEmail);
 
   const hendleUpdate = () => {
     navigate(`/Update/${data._id}`);
   };
 
   const hendleDelete = () => {
-    fetch(`http://localhost:3000/foodCollection/${data._id}`, {
+    fetch(`http://localhost:3000/privateFoodCollection/${data._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then((d) => {
         //console.log(data);
         toast.success("Done");
         navigate(`/MyReviews/${data.userEmail}`);

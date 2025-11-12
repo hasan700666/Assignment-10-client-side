@@ -1,11 +1,28 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import MyReviewTable from "../Components/MyReviewTable";
+import { AuthContext } from "../Context/AuthContext/AuthContext";
 
 const MyReviews = () => {
-  const data = useLoaderData();
+  const { email } = useParams();
+  const [data, setData] = useState([]);
+  const { user } = use(AuthContext);
 
-  //console.log(data);
+  useEffect(() => {
+    fetch(`http://localhost:3000/privateFoodCollection?email=${email}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((d) => {
+        console.log(d);
+        setData(d);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
   return (
     <div className="">
@@ -23,7 +40,9 @@ const MyReviews = () => {
             <th></th>
           </tr>
         </thead>
-        {data.map((data)=><MyReviewTable data={data}></MyReviewTable>)}
+        {data.map((data) => (
+          <MyReviewTable data={data}></MyReviewTable>
+        ))}
       </table>
     </div>
   );

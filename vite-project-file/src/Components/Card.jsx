@@ -1,14 +1,19 @@
 import React, { use } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { NavLink } from "react-router";
 
 const Card = ({ data }) => {
   const { user } = use(AuthContext);
 
-  //console.log(data);
+  console.log(data);
   //console.log(user);
 
   const hendleFavorites = () => {
+    if (!user) {
+      return toast.error("Please Log in");
+    }
+
     const dock = {
       foodId: data._id,
       userEmail: user.email,
@@ -37,8 +42,13 @@ const Card = ({ data }) => {
       });
   };
 
+  const hendleAbout = () => {};
+
   return (
     <div>
+      <div>
+        <Toaster></Toaster>
+      </div>
       <div className="card bg-base-100 w-96 shadow-sm">
         <figure className="px-10 pt-10">
           <img src={data.foodImage} alt="Shoes" className="rounded-xl" />
@@ -50,6 +60,9 @@ const Card = ({ data }) => {
             <button className="btn btn-primary" onClick={hendleFavorites}>
               Add to Favorites
             </button>
+            <NavLink to={`/foodDetails/${data._id}`}>
+              <button className="btn btn-primary">See All</button>
+            </NavLink>
           </div>
         </div>
       </div>

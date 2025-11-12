@@ -3,32 +3,28 @@ import { AuthContext } from "../Context/AuthContext/AuthContext";
 import { useParams } from "react-router";
 
 const FoodDetails = () => {
+  const { id } = useParams();
+  const [Data, setData] = useState("");
+  const [showLoader, setShowLoader] = useState(true);
 
-  const {id} = useParams()
-  const [Data,setData] = useState("")
-  const [showLoader,setShowLoader] = useState(true)
-
-  const { loader,user } = use(AuthContext);
+  const { loader, user } = use(AuthContext);
 
   //console.log(user.accessToken);
-  
 
   useEffect(() => {
-    fetch(`http://localhost:3000/foodCollection/${id}`, {
+    fetch(`http://localhost:3000/publicFoodCollection/${id}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
     })
-      .then((res) => res.json()) 
+      .then((res) => res.json())
       .then((data) => {
         //console.log(data)
-        setData(data)
-        setShowLoader(false)
+        setData(data);
+        setShowLoader(false);
       })
-      .catch((e) => console.log(e))
-
+      .catch((e) => console.log(e));
   }, []);
-
 
   if (loader) {
     return (
@@ -38,7 +34,7 @@ const FoodDetails = () => {
     );
   }
 
-  if(showLoader){
+  if (showLoader) {
     return (
       <div className="h-[100vh] flex justify-center items-center">
         <span className="loading loading-infinity size-20"></span>

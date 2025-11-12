@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: () => fetch("http://localhost:3000/foodCollection"),
+        loader: () => fetch("http://localhost:3000/publicFoodCollectionHome"),
       },
       {
         path: "/AddReview",
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
       {
         path: "/AllReview",
         Component: AllReview,
-        loader: () => fetch("http://localhost:3000/foodCollection"),
+        loader: () => fetch("http://localhost:3000/publicFoodCollection"),
       },
       {
         path: "/MyProfile",
@@ -51,8 +51,6 @@ export const router = createBrowserRouter([
             <MyReviews></MyReviews>
           </ProtectedRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/foodCollection?email=${params.email}`),
       },
       {
         path: "/foodDetails/:id",
@@ -78,7 +76,7 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/foodCollection/${params.id}`),
+          fetch(`http://localhost:3000/privateFoodCollection/${params.id}`),
       },
       {
         path: "/MyFavorites/:email",

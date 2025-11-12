@@ -6,7 +6,7 @@ import HomeCard from "../Components/HomeCard";
 const Home = () => {
   const data = useLoaderData();
 
-  //.log(data);
+  console.log(data);
 
   const { loader } = use(AuthContext);
 
@@ -19,7 +19,9 @@ const Home = () => {
   }
   return (
     <div>
-      {data.map((data) => <HomeCard data={data}></HomeCard>)}
+      {data.map((data) => (
+        <HomeCard data={data}></HomeCard>
+      ))}
     </div>
   );
 };

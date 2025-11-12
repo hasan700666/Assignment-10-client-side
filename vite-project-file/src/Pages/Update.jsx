@@ -2,12 +2,12 @@ import React, { use } from "react";
 import img from "../assets/images/logo.png";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
-import { data, useLoaderData } from "react-router";
+import {  useLoaderData } from "react-router";
 
 const Update = () => {
   const data = useLoaderData();
 
-  //console.log(data);
+  console.log(data._id);
 
   const { user } = use(AuthContext);
 
@@ -20,6 +20,7 @@ const Update = () => {
     const location = e.target.location.value;
     const bio = e.target.bio.value;
     const ster = e.target.rating_10.value;
+    const price = e.target.price.value;
 
     if (
       name == false ||
@@ -27,7 +28,8 @@ const Update = () => {
       restaurant_name == false ||
       location == false ||
       bio == false ||
-      ster == false
+      ster == false ||
+      price == false
     ) {
       return toast.error("All fields are required");
     }
@@ -42,11 +44,12 @@ const Update = () => {
       userEmail: user.email,
       userName: user.displayName,
       date: new Date(),
+      price: e.target.price.value,
     };
 
-    //console.log(dock);
+    console.log(dock);
 
-    fetch(`http://localhost:3000/foodCollection/${data._id}`, {
+    fetch(`http://localhost:3000/privateFoodCollection/${data._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -178,6 +181,14 @@ const Update = () => {
                           />
                         </div>
                       </div>
+                      <label className="label">Price</label>
+                      <input
+                        type="number"
+                        className="input w-full rounded_css"
+                        placeholder="Enter The Location Of Restaurant"
+                        name="price"
+                         defaultValue={data.price}
+                      />
                       <button className="btn btn-neutral mt-4 button_css">
                         Add Now
                       </button>
