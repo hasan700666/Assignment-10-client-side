@@ -1,15 +1,39 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import MyFavoritesCard from "../Components/MyFavoritesCard";
+import { AuthContext } from "../Context/AuthContext/AuthContext";
 
 const MyFavorites = () => {
-  const data = useLoaderData();
+  const { user } = use(AuthContext);
 
-  //console.log(data);
+  const [Data, setData] = useState([]);
+
+  const { email } = useParams();
+
+  //console.log(user);
+  //console.log(email);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/favoriteCollection?email=${email}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((feachData) => {
+        console.log(feachData);
+        setData(feachData);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  console.log(Data);
 
   return (
     <div>
-      {data.map((data) => (
+      {Data?.map((data) => (
         <MyFavoritesCard data={data}></MyFavoritesCard>
       ))}
     </div>

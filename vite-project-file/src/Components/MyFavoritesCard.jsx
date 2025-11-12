@@ -5,6 +5,9 @@ import toast, { Toaster } from "react-hot-toast";
 const MyFavoritesCard = ({ data }) => {
   const navigate = useNavigate();
 
+  //console.log(data);
+  
+
   console.log(data.userEmail);
   //console.log("heoool");
 
