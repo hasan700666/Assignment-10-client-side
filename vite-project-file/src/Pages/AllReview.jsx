@@ -26,7 +26,7 @@ const AllReview = () => {
     console.log(search);
 
     if (search) {
-      fetch(`http://localhost:3000/searchfoodCollection?search=${search}`)
+      fetch(`http://localhost:3000/searchPublicFoodCollection?search=${search}`)
         .then((res) => res.json())
         .then((data) => {
           //console.log(data);

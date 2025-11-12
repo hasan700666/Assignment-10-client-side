@@ -1,15 +1,32 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import img from "../assets/images/logo.png";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
-import {  useLoaderData } from "react-router";
+import { useParams } from "react-router";
 
 const Update = () => {
-  const data = useLoaderData();
+  const { id } = useParams();
+  const [data, setData] = useState([]);
 
-  console.log(data._id);
+  //console.log(data._id);
 
   const { user } = use(AuthContext);
+
+  console.log(user);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/privateFoodCollection/${id}?email=${user.email}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((d) => {
+        console.log(d);
+        setData(d);
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   const hendleSubmit = (e) => {
     e.preventDefault();
@@ -57,8 +74,8 @@ const Update = () => {
       body: JSON.stringify(dock),
     })
       .then((res) => res.json())
-      .then((data) => {
-        //console.log(data);
+      .then((d) => {
+        //console.log(d);
         toast.success("Done");
       })
       .catch((e) => {
@@ -187,7 +204,7 @@ const Update = () => {
                         className="input w-full rounded_css"
                         placeholder="Enter The Location Of Restaurant"
                         name="price"
-                         defaultValue={data.price}
+                        defaultValue={data.price}
                       />
                       <button className="btn btn-neutral mt-4 button_css">
                         Add Now

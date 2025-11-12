@@ -75,8 +75,7 @@ export const router = createBrowserRouter([
             <Update></Update>
           </ProtectedRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/privateFoodCollection/${params.id}`),
+          
       },
       {
         path: "/MyFavorites/:email",
