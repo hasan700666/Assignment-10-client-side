@@ -6,7 +6,7 @@ import { NavLink } from "react-router";
 const Card = ({ data }) => {
   const { user } = use(AuthContext);
 
-  console.log(data);
+  //console.log(data);
   //console.log(user);
 
   const hendleFavorites = () => {
@@ -23,7 +23,7 @@ const Card = ({ data }) => {
       location: data.location,
     };
 
-    console.log(dock);
+    //console.log(dock);
 
     fetch(`http://localhost:3000/favoriteCollection`, {
       method: "POST",

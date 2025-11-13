@@ -23,7 +23,7 @@ const AllReview = () => {
   const hendleSearch = (e) => {
     const search = e.target.value;
 
-    console.log(search);
+    //console.log(search);
 
     if (search) {
       fetch(`http://localhost:3000/searchPublicFoodCollection?search=${search}`)

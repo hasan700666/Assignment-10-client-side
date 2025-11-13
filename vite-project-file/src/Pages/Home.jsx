@@ -6,7 +6,7 @@ import HomeCard from "../Components/HomeCard";
 const Home = () => {
   const data = useLoaderData();
 
-  console.log(data);
+  //console.log(data);
 
   const { loader } = use(AuthContext);
 

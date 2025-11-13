@@ -107,7 +107,7 @@ const Register = () => {
     CreateUser(email, password)
       .then((userCredential) => {
         // Signed up
-        console.log(userCredential);
+        //console.log(userCredential);
         UpdateUser(name, Photo_URL)
           .then((res) => {
             // Profile updated!

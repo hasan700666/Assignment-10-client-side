@@ -5,8 +5,8 @@ import { AuthContext } from "../Context/AuthContext/AuthContext";
 const HomeCard = ({ data }) => {
   const { user } = use(AuthContext);
 
-  console.log(data);
-  console.log(data.foodId);
+  //console.log(data);
+  //console.log(data.foodId);
 
   return (
     <div>

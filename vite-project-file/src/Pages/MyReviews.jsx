@@ -16,11 +16,11 @@ const MyReviews = () => {
     })
       .then((res) => res.json())
       .then((d) => {
-        console.log(d);
+        //console.log(d);
         setData(d);
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   }, []);
 

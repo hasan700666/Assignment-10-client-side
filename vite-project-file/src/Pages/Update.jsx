@@ -12,7 +12,7 @@ const Update = () => {
 
   const { user } = use(AuthContext);
 
-  console.log(user);
+  //console.log(user);
 
   useEffect(() => {
     fetch(`http://localhost:3000/privateFoodCollection/${id}?email=${user.email}`, {
@@ -22,7 +22,7 @@ const Update = () => {
     })
       .then((res) => res.json())
       .then((d) => {
-        console.log(d);
+        //console.log(d);
         setData(d);
       })
       .catch((e) => console.log(e));
@@ -64,7 +64,7 @@ const Update = () => {
       price: e.target.price.value,
     };
 
-    console.log(dock);
+    //console.log(dock);
 
     fetch(`http://localhost:3000/privateFoodCollection/${data._id}`, {
       method: "PATCH",

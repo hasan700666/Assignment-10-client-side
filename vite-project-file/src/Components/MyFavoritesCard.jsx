@@ -8,7 +8,7 @@ const MyFavoritesCard = ({ data }) => {
   //console.log(data);
   
 
-  console.log(data.userEmail);
+  //console.log(data.userEmail);
   //console.log("heoool");
 
   const hendleDelete = () => {

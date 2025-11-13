@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 const MyReviewTable = ({ data }) => {
   const navigate = useNavigate();
 
-  console.log(data.userEmail);
+  //console.log(data.userEmail);
 
   const hendleUpdate = () => {
     navigate(`/Update/${data._id}`);
