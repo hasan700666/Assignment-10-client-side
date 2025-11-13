@@ -9,22 +9,12 @@ const HomeCard = ({ data }) => {
   //console.log(data.foodId);
 
   return (
-    <div>
-      <div>
-        <div className="card bg-base-100 w-96 shadow-sm">
-          <figure className="px-10 pt-10">
-            <img src={data.foodImage} alt="Shoes" className="rounded-xl" />
-          </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">{data.foodName}</h2>
-            <p>{data.reviewText}</p>
-            <div className="card-actions">
-              <NavLink to={`/foodDetails/${data._id}`}>
-                <button className="btn btn-primary">Details</button>
-              </NavLink>
-            </div>
-          </div>
-        </div>
+    <div className="flex justify-center items-center"> 
+      {/* <div>
+        
+      </div> */}
+      <div className="card_des_css ">
+        <h2>CARD</h2>
       </div>
     </div>
   );

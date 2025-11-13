@@ -19,9 +19,14 @@ const Home = () => {
   }
   return (
     <div>
-      {data.map((data) => (
-        <HomeCard data={data}></HomeCard>
-      ))}
+      <div className="text-center m-10">Featured Reviews</div>
+      <div>
+        <div className="grid grid-cols-3 gap-5">
+          {data.map((data) => (
+            <HomeCard data={data}></HomeCard>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

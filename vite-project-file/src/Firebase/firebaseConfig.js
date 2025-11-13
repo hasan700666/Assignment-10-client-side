@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBg7stGf3AhEDuEMTKW5f_0ntY6yVdcjqI",
-  authDomain: "food-lover-7eb8f.firebaseapp.com",
-  projectId: "food-lover-7eb8f",
-  storageBucket: "food-lover-7eb8f.firebasestorage.app",
-  messagingSenderId: "958557449773",
-  appId: "1:958557449773:web:44e7b8311c7eb5c60ad2a4"
+  apiKey: import.meta.env.VITE_APIKEY ,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN ,
+  projectId: import.meta.env.VITE_PROJECTID ,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET ,
+  messagingSender: import.meta.env.VITE_MESSAGINGSENDERID ,
+  appId: import.meta.env.VITE_APPID ,
 };
 
 // Initialize Firebase
