@@ -36,19 +36,6 @@ const AddReview = () => {
       return toast.error("All fields are required");
     }
 
-    const dockWithEmail = {
-      foodName: e.target.name.value,
-      foodImage: e.target.photo_url.value,
-      restaurantName: e.target.restaurant_name.value,
-      location: e.target.location.value,
-      starRating: e.target.rating_10.value,
-      reviewText: e.target.bio.value,
-      userEmail: user.email,
-      userName: user.displayName,
-      date: new Date(),
-      price: e.target.price.value,
-    };
-
     const dock = {
       foodName: e.target.name.value,
       foodImage: e.target.photo_url.value,
@@ -63,7 +50,7 @@ const AddReview = () => {
 
     //console.log(dock);
 
-    fetch("http://localhost:3000/publicFoodCollection", {
+    fetch("http://localhost:3000/publicFoodCollection", {  //-->id = 3
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,24 +58,40 @@ const AddReview = () => {
       body: JSON.stringify(dock),
     })
       .then((res) => res.json())
-      .then((data) => {
-        //console.log(data);
-        toast.success("Done");
-      })
-      .catch((e) => {
-        //console.log(e);
-      });
+      .then((d) => {
+        //console.log(d.insertedId);
 
-    fetch("http://localhost:3000/privateFoodCollection", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dockWithEmail),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log(data);
+        const dockWithEmail = {
+          foodName: e.target.name.value,
+          foodImage: e.target.photo_url.value,
+          restaurantName: e.target.restaurant_name.value,
+          location: e.target.location.value,
+          starRating: e.target.rating_10.value,
+          reviewText: e.target.bio.value,
+          userEmail: user.email,
+          userName: user.displayName,
+          date: new Date(),
+          price: e.target.price.value,
+          foodId: d.insertedId,
+        };
+
+        //console.log(dockWithEmail);
+
+        fetch("http://localhost:3000/privateFoodCollection", {  //--> id = 4
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dockWithEmail),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            //console.log(data);
+            toast.success("Done");
+          })
+          .catch((e) => {
+            //console.log(e);
+          });
         toast.success("Done");
       })
       .catch((e) => {

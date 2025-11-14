@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: () => fetch("http://localhost:3000/publicFoodCollectionHome"),
+        loader: () => fetch("http://localhost:3000/publicFoodCollectionHome"),  //-->id = 1
       },
       {
         path: "/AddReview",
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
       {
         path: "/AllReview",
         Component: AllReview,
-        loader: () => fetch("http://localhost:3000/publicFoodCollection"),
+        loader: () => fetch("http://localhost:3000/publicFoodCollection"),    //--> id = 2
       },
       {
         path: "/MyProfile",

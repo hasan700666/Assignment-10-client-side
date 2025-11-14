@@ -15,18 +15,23 @@ const Update = () => {
   //console.log(user);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/privateFoodCollection/${id}?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `http://localhost:3000/privateFoodCollection/${id}`, //--> id = 6
+      {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((d) => {
-        //console.log(d);
+        console.log(d);
         setData(d);
       })
       .catch((e) => console.log(e));
   }, []);
+
+  console.log(data);
 
   const hendleSubmit = (e) => {
     e.preventDefault();
@@ -58,15 +63,29 @@ const Update = () => {
       location: e.target.location.value,
       starRating: e.target.rating_10.value,
       reviewText: e.target.bio.value,
-      userEmail: user.email,
       userName: user.displayName,
       date: new Date(),
       price: e.target.price.value,
     };
 
+    const dockWithEmail = {
+      foodName: e.target.name.value,
+      foodImage: e.target.photo_url.value,
+      restaurantName: e.target.restaurant_name.value,
+      location: e.target.location.value,
+      starRating: e.target.rating_10.value,
+      reviewText: e.target.bio.value,
+      userEmail: user.email,
+      userName: user.displayName,
+      date: new Date(),
+      price: e.target.price.value,
+      foodId: data.foodId,
+    };
+
     //console.log(dock);
 
-    fetch(`http://localhost:3000/privateFoodCollection/${data._id}`, {
+    fetch(`http://localhost:3000/publicFoodCollection/${data.foodId}`, {
+      //--> id = 7
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +94,40 @@ const Update = () => {
     })
       .then((res) => res.json())
       .then((d) => {
-        //console.log(d);
+        console.log(d);
+
+        fetch(
+          `http://localhost:3000/privateFoodCollection?foodId=${data.foodId}`,
+          {
+            //--> id = 8
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dockWithEmail),
+          }
+        )
+          .then((res) => res.json())
+          .then((d) => {
+            console.log(d);
+            console.log("i am in");
+            fetch(
+              `http://localhost:3000/favoriteCollection?foodId=${data.foodId}`,
+              {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dock),
+              }
+            )
+              .then((res) => res.json())
+              .then((d) => console.log(d))
+              .catch((e) => console.log(e));
+          })
+          .catch((e) => {
+            console.log(e);
+          });
         toast.success("Done");
       })
       .catch((e) => {

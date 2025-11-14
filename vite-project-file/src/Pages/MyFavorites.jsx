@@ -14,7 +14,7 @@ const MyFavorites = () => {
   //console.log(email);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/favoriteCollection?email=${email}`, {
+    fetch(`http://localhost:3000/favoriteCollection?email=${email}`, {  //id = 12
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -34,7 +34,7 @@ const MyFavorites = () => {
   return (
     <div>
       {Data?.map((data) => (
-        <MyFavoritesCard data={data}></MyFavoritesCard>
+        <MyFavoritesCard data={data} setData={setData}></MyFavoritesCard>
       ))}
     </div>
   );

@@ -16,16 +16,20 @@ const Card = ({ data }) => {
 
     const dock = {
       foodId: data._id,
-      userEmail: user.email,
       foodName: data.foodName,
       foodImage: data.foodImage,
       restaurantName: data.restaurantName,
       location: data.location,
+      date: data.date,
+      price: data.price,
+      reviewText: data.reviewText,
+      starRating: data.starRating,
+      userName: data.userName
     };
 
-    //console.log(dock);
+    console.log(dock);
 
-    fetch(`http://localhost:3000/favoriteCollection`, {
+    fetch(`http://localhost:3000/favoriteCollection`, {   //id = 11
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -9,14 +9,14 @@ const MyReviews = () => {
   const { user } = use(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/privateFoodCollection?email=${email}`, {
+    fetch(`http://localhost:3000/privateFoodCollection?email=${email}`, {    //--> id = 5
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
     })
       .then((res) => res.json())
       .then((d) => {
-        //console.log(d);
+        console.log(d);
         setData(d);
       })
       .catch((e) => {
@@ -41,7 +41,7 @@ const MyReviews = () => {
           </tr>
         </thead>
         {data.map((data) => (
-          <MyReviewTable data={data}></MyReviewTable>
+          <MyReviewTable data={data} setData={setData}></MyReviewTable>
         ))}
       </table>
     </div>

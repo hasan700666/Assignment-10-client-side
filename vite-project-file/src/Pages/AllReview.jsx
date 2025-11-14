@@ -30,13 +30,13 @@ const AllReview = () => {
         .then((res) => res.json())
         .then((data) => {
           //console.log(data);
-          setData(data)
+          setData(data);
         })
         .catch((e) => {
           //console.log(e);
         });
-    }else{
-      setData(lodeData)
+    } else {
+      setData(lodeData);
     }
   };
 
