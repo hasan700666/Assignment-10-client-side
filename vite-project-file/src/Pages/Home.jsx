@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router";
 import HomeCard from "../Components/HomeCard";
 import SwiperComponent from "../Components/SwiperComponent";
 import TopFoodBloggers from "../Components/topFoodBloggers";
+import About from "../Components/About";
 
 const Home = () => {
   const data = useLoaderData();
@@ -73,20 +74,27 @@ const Home = () => {
           <span className="text-[#bf1e2e]">About </span>
           <span className="text-[#ee1c25]"> Us</span>
         </div>
-        <div className="text-2xl text-center bg-[#ffeded] p-10 rounded-3xl">
-          <span>Local Food Lovers Network</span> is a community-driven platform
-          designed for people who love exploring and sharing great food. Whether
-          it’s a hidden street-food stall, a cozy restaurant, or a homemade
-          dish, this platform connects food enthusiasts who want to discover
-          local flavors and share honest experiences. Our mission is to bring
-          together people through food — helping users post reviews with photos,
-          explore dishes shared by others, and celebrate the diversity of local
-          eateries. Every review, photo, and shared moment helps build a
-          community where food lovers can inspire each other. This platform
-          isn’t just about ratings — it’s about stories, experiences, and the
-          joy of discovering something new right around the corner.
+        <div className="flex items-center bg-[#ffeded] p-10 rounded-3xl justify-center flex-col">
+          <div>
+            <About></About>
+          </div>
+          <div className="text-2xl text-center">
+            <span>Local Food Lovers Network</span> is a community-driven
+            platform designed for people who love exploring and sharing great
+            food. Whether it’s a hidden street-food stall, a cozy restaurant, or
+            a homemade dish, this platform connects food enthusiasts who want to
+            discover local flavors and share honest experiences. Our mission is
+            to bring together people through food — helping users post reviews
+            with photos, explore dishes shared by others, and celebrate the
+            diversity of local eateries. Every review, photo, and shared moment
+            helps build a community where food lovers can inspire each other.
+            This platform isn’t just about ratings — it’s about stories,
+            experiences, and the joy of discovering something new right around
+            the corner.
+          </div>
         </div>
       </div>
+      <div></div>
     </div>
   );
 };
