@@ -54,6 +54,9 @@ const AddReview = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+
+        authorization: `Bearer ${user.accessToken}`,
+      
       },
       body: JSON.stringify(dock),
     })
@@ -81,6 +84,7 @@ const AddReview = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${user.accessToken}`,
           },
           body: JSON.stringify(dockWithEmail),
         })

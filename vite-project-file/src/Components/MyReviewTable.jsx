@@ -16,31 +16,31 @@ const MyReviewTable = ({ data, setData }) => {
   };
 
   const hendleDelete = () => {
-    fetch(`http://localhost:3000/privateFoodCollection/${data._id}`, {
-      //--> id = 9
-      //--> id = 9
+    fetch(`http://localhost:3000/privateFoodCollection/${data._id}`, {       //--> id = 9
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${user.accessToken}`
       },
     })
       .then((res) => res.json())
       .then((d) => {
         //console.log(data);
-        fetch(`http://localhost:3000/publicFoodCollection/${data.foodId}`, {
-          //--> id = 10
+        fetch(`http://localhost:3000/publicFoodCollection/${data.foodId}`, {          //--> id = 10
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${user.accessToken}`
           },
-        }) //--> id = 10
+        })
           .then((res) => res.json())
           .then((d) => {
             console.log(d);
-            fetch(`http://localhost:3000/favoriteCollection?foodId=${data.foodId}`,{
+            fetch(`http://localhost:3000/favoriteCollection?foodId=${data.foodId}`,{  //--> id = 15
               method: "DELETE",
               headers:{
                 "Content-Type": "application/json",
+                authorization: `Bearer ${user.accessToken}`
               }
             })
               .then((res) => res.json())

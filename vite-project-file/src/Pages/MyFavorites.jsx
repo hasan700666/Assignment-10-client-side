@@ -21,11 +21,11 @@ const MyFavorites = () => {
     })
       .then((res) => res.json())
       .then((feachData) => {
-        //console.log(feachData);
+        console.log(feachData);
         setData(feachData);
       })
       .catch((e) => {
-        //console.log(e);
+        console.log(e);
       });
   }, []);
 

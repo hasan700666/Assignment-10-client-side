@@ -12,7 +12,7 @@ const FoodDetails = () => {
   //console.log(user.accessToken);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/publicFoodCollection/${id}`, {
+    fetch(`http://localhost:3000/publicFoodCollection/${id}`, {  //--> id = 16
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },

@@ -20,6 +20,7 @@ const MyFavoritesCard = ({ data, setData }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${user.accessToken}`
       },
     })
       .then((res) => res.json())

@@ -84,11 +84,11 @@ const Update = () => {
 
     //console.log(dock);
 
-    fetch(`http://localhost:3000/publicFoodCollection/${data.foodId}`, {
-      //--> id = 7
+    fetch(`http://localhost:3000/publicFoodCollection/${data.foodId}`, {         //--> id = 7
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+         authorization: `Bearer ${user.accessToken}`,
       },
       body: JSON.stringify(dock),
     })
@@ -97,12 +97,12 @@ const Update = () => {
         console.log(d);
 
         fetch(
-          `http://localhost:3000/privateFoodCollection?foodId=${data.foodId}`,
-          {
-            //--> id = 8
+          `http://localhost:3000/privateFoodCollection?foodId=${data.foodId}`,   //--> id = 8
+          {       
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
+              authorization: `Bearer ${user.accessToken}`
             },
             body: JSON.stringify(dockWithEmail),
           }
@@ -112,11 +112,12 @@ const Update = () => {
             console.log(d);
             console.log("i am in");
             fetch(
-              `http://localhost:3000/favoriteCollection?foodId=${data.foodId}`,
+              `http://localhost:3000/favoriteCollection?foodId=${data.foodId}`,    //--> id = 14
               {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
+                  authorization: `Bearer ${user.accessToken}`
                 },
                 body: JSON.stringify(dock),
               }
