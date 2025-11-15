@@ -66,9 +66,6 @@ const Login = () => {
       <div>
         <Toaster />
       </div>
-      <div>
-        <img src={img} alt="" />
-      </div>
       <div className="m-10">
         <div className="hero-content flex-col lg:flex-row-reverse ">
           <div className="card w-full shrink-0 shadow-2xl bg_css">
@@ -135,9 +132,6 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <img src={img} alt="" />
       </div>
     </div>
   );

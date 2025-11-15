@@ -6,9 +6,6 @@ import { FaStar } from "react-icons/fa6";
 const HomeCard = ({ data }) => {
   const { user } = use(AuthContext);
 
-  //console.log(data);
-  //console.log(data.foodId);
-
   return (
     <div className="flex justify-center items-center">
       <div className="card_des_css w-[400px] h-[620px]">

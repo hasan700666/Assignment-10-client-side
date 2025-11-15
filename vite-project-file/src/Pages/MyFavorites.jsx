@@ -41,10 +41,18 @@ const MyFavorites = () => {
         <span className="text-[#bf1e2e]">My Favorites </span>
         <span className="text-[#ee1c25]"> Collection</span>
       </div>
-      <div className="grid grid-cols-4 gap-5 mb-10">
-        {Data?.map((data) => (
-          <MyFavoritesCard data={data} setData={setData}></MyFavoritesCard>
-        ))}
+      <div>
+        {Data.length ? (
+          <div className="grid grid-cols-4 gap-5 mb-10">
+            {Data?.map((data) => (
+              <MyFavoritesCard data={data} setData={setData}></MyFavoritesCard>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center min-h-screen flex justify-center items-center text-4xl">
+            Nothing!
+          </div>
+        )}
       </div>
     </div>
   );

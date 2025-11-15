@@ -7,6 +7,7 @@ const MyReviews = () => {
   const { email } = useParams();
   const [data, setData] = useState([]);
   const { user } = use(AuthContext);
+  const [no, setNo] = useState(0);
 
   useEffect(() => {
     fetch(
@@ -28,26 +29,41 @@ const MyReviews = () => {
       });
   }, []);
 
+  console.log(data);
+
   return (
-    <div className="">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-            <th></th>
-          </tr>
-        </thead>
-        {data.map((data) => (
-          <MyReviewTable data={data} setData={setData}></MyReviewTable>
-        ))}
-      </table>
+    <div>
+      <div className="text-center m-10 text-6xl pt-10">
+        <span className="text-[#bf1e2e]">My </span>
+        <span className="text-[#ee1c25]"> Review</span>
+      </div>
+      {data.length ? (
+        <div className="">
+          <div className="overflow-x-auto">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Food Name</th>
+                  <th>Restaurant Name</th>
+                  <th>Price</th>
+                  <th>Rating</th>
+                  <th className="w-80">Update Or Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+                  <MyReviewTable data={item} index={index} setData={setData} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        <div className="text-center min-h-screen flex justify-center items-center text-4xl">
+          Nothing!
+        </div>
+      )}
     </div>
   );
 };

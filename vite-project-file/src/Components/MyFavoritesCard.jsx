@@ -15,8 +15,6 @@ const MyFavoritesCard = ({ data, setData }) => {
   //console.log("heoool");
 
   const hendleDelete = () => {
-    //console.log("hasan");
-
     fetch(`https://foodloverserver.vercel.app/favoriteCollection/${data._id}`, {
       //--> id = 13
       method: "DELETE",
@@ -91,8 +89,11 @@ const MyFavoritesCard = ({ data, setData }) => {
               </div>
               <div className="text-center">
                 <NavLink to={`/foodDetails/${data._id}`}>
-                  <button className="button_css">Details</button>
+                  <button className="button_css mr-2">Details</button>
                 </NavLink>
+                <button onClick={hendleDelete} className="button_css ml-2">
+                  Unfavorite{" "}
+                </button>
               </div>
             </div>
           </div>

@@ -51,8 +51,8 @@ const MyProfile = () => {
             <div>
               <div className="hero min-h-screen ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                  <div className="card w-full shrink-0 shadow-2xl bg-[#f8f8ec]">
-                    <div className="card-body bg-[#f8f8ec] rounded-4xl pb-15">
+                  <div className="card w-full shrink-0 shadow-2xl bg-[#ffeded]">
+                    <div className="card-body bg-[#ffeded] rounded-4xl pb-15">
                       <h1 className="text-5xl font-bold m-10">Update now!</h1>
                       <form onSubmit={hendleSubmite}>
                         <fieldset className="fieldset">
@@ -71,11 +71,11 @@ const MyProfile = () => {
                             name="photo"
                           />
 
-                          <button className="btn btn-neutral mt-4">Done</button>
+                          <button className="button_css mt-5">Done</button>
                         </fieldset>
                       </form>
                       <button
-                        className="btn bg-[#176b39] hover:bg-[#4ec06e] hover:text-[#f8f8ec] text-[#f8f8ec] text-center my-5"
+                        className="button_css"
                         onClick={hendleUpdateProfile}
                       >
                         Go to My Profile page
@@ -97,10 +97,10 @@ const MyProfile = () => {
               </div>
               <div>
                 <div className="min-h-screen  flex items-center justify-center p-6 ">
-                  <div className="max-w-5xl w-full  rounded-2xl shadow-lg p-8 grid md:grid-cols-2 gap-8 bg-[#f8f8ec]">
+                  <div className="max-w-5xl w-full  rounded-2xl shadow-lg p-8 grid md:grid-cols-2 gap-8 bg-[#ffeded]">
                     {/* Left Side - Profile Info */}
                     <div className="flex flex-col items-center text-center justify-center">
-                      <div className="w-70 rounded-4xl overflow-hidden border-10 border-[#176b39] mb-4">
+                      <div className="w-70 rounded-4xl overflow-hidden border-10 border-[#df1e2e] mb-4">
                         <img
                           src={user?.photoURL}
                           alt="non"
@@ -110,7 +110,7 @@ const MyProfile = () => {
                       <h2 className="text-2xl font-semibold">
                         {user?.displayName}
                       </h2>
-                      <p className="text-[#4ec06e] text-sm font-medium">
+                      <p className="text-[#ee1c25] text-sm font-medium">
                         {user?.email}
                       </p>
                     </div>
@@ -159,7 +159,7 @@ const MyProfile = () => {
                       <div className="md:block flex justify-center items-center">
                         <button
                           onClick={hendleUpdateProfile}
-                          className="btn bg-[#176b39] hover:bg-[#4ec06e] hover:text-[#f8f8ec] text-[#f8f8ec] text-center m-auto px-10 md:mt-20 mt-5"
+                          className="button_css mt-20"
                         >
                           Update
                         </button>

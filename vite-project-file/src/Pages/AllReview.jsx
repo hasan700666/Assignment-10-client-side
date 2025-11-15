@@ -42,6 +42,9 @@ const AllReview = () => {
     }
   };
 
+  console.log(data);
+  
+
   return (
     <div>
       <div className="text-center m-10 text-6xl pt-10">
@@ -77,10 +80,18 @@ const AllReview = () => {
           </label>
         </form>
       </div>
-      <div className="grid grid-cols-4 gap-5 my-10">
-        {data.map((data) => (
-          <Card data={data}></Card>
-        ))}
+      <div>
+        {data.length ? (
+          <div className="grid grid-cols-4 gap-5 my-10">
+            {data.map((data) => (
+              <Card data={data}></Card>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center min-h-screen flex justify-center items-center text-4xl">
+            Nothing!
+          </div>
+        )}
       </div>
     </div>
   );

@@ -111,9 +111,6 @@ const AddReview = () => {
           <Toaster />
         </div>
         <div className="flex justify-center items-center">
-          <div>
-            <img src={img} alt="" />
-          </div>
           <div className="m-10">
             <div className="flex-col lg:flex-row-reverse ">
               <div className="card w-full shrink-0 shadow-2xl bg_css">
@@ -224,9 +221,6 @@ const AddReview = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-            <img src={img} alt="" />
           </div>
         </div>
       </div>
