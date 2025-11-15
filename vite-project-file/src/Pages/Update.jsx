@@ -16,7 +16,7 @@ const Update = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/privateFoodCollection/${id}`, //--> id = 6
+      `https://foodloverserver.vercel.app/privateFoodCollection/${id}`, //--> id = 6
       {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
@@ -84,25 +84,29 @@ const Update = () => {
 
     //console.log(dock);
 
-    fetch(`http://localhost:3000/publicFoodCollection/${data.foodId}`, {         //--> id = 7
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-         authorization: `Bearer ${user.accessToken}`,
-      },
-      body: JSON.stringify(dock),
-    })
+    fetch(
+      `https://foodloverserver.vercel.app/publicFoodCollection/${data.foodId}`,
+      {
+        //--> id = 7
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${user.accessToken}`,
+        },
+        body: JSON.stringify(dock),
+      }
+    )
       .then((res) => res.json())
       .then((d) => {
         console.log(d);
 
         fetch(
-          `http://localhost:3000/privateFoodCollection?foodId=${data.foodId}`,   //--> id = 8
-          {       
+          `https://foodloverserver.vercel.app/privateFoodCollection?foodId=${data.foodId}`, //--> id = 8
+          {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
-              authorization: `Bearer ${user.accessToken}`
+              authorization: `Bearer ${user.accessToken}`,
             },
             body: JSON.stringify(dockWithEmail),
           }
@@ -112,12 +116,12 @@ const Update = () => {
             console.log(d);
             console.log("i am in");
             fetch(
-              `http://localhost:3000/favoriteCollection?foodId=${data.foodId}`,    //--> id = 14
+              `https://foodloverserver.vercel.app/favoriteCollection?foodId=${data.foodId}`, //--> id = 14
               {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
-                  authorization: `Bearer ${user.accessToken}`
+                  authorization: `Bearer ${user.accessToken}`,
                 },
                 body: JSON.stringify(dock),
               }

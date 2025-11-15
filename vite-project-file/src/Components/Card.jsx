@@ -24,16 +24,17 @@ const Card = ({ data }) => {
       price: data.price,
       reviewText: data.reviewText,
       starRating: data.starRating,
-      userName: data.userName
+      userName: data.userName,
     };
 
     console.log(dock);
 
-    fetch(`http://localhost:3000/favoriteCollection`, {   //id = 11
+    fetch(`https://foodloverserver.vercel.app/favoriteCollection`, {
+      //id = 11
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${user.accessToken}`
+        authorization: `Bearer ${user.accessToken}`,
       },
       body: JSON.stringify(dock),
     })

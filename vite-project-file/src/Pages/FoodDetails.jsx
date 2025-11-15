@@ -12,7 +12,8 @@ const FoodDetails = () => {
   //console.log(user.accessToken);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/publicFoodCollection/${id}`, {  //--> id = 16
+    fetch(`https://foodloverserver.vercel.app/publicFoodCollection/${id}`, {
+      //--> id = 16
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },

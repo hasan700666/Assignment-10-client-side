@@ -16,21 +16,26 @@ const MyFavoritesCard = ({ data, setData }) => {
   const hendleDelete = () => {
     //console.log("hasan");
 
-    fetch(`http://localhost:3000/favoriteCollection/${data._id}`, {  //--> id = 13 
+    fetch(`https://foodloverserver.vercel.app/favoriteCollection/${data._id}`, {
+      //--> id = 13
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${user.accessToken}`
+        authorization: `Bearer ${user.accessToken}`,
       },
     })
       .then((res) => res.json())
       .then((d) => {
         //console.log(d);
-        fetch(`http://localhost:3000/favoriteCollection?email=${user.email}`, {  //--> id = 12
-          headers: {
-            authorization: `Bearer ${user.accessToken}`,
-          },
-        })
+        fetch(
+          `https://foodloverserver.vercel.app/favoriteCollection?email=${user.email}`,
+          {
+            //--> id = 12
+            headers: {
+              authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        )
           .then((res) => res.json())
           .then((feachData) => {
             //console.log(feachData);

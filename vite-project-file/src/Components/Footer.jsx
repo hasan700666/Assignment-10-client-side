@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
           <h2 className="font-bold text-lg">
-            <img src={img} alt="" className="w-20" />
+            <img src={img} alt="" className="w-10" />
           </h2>
           <p>FOOD LOVER COMMUNICATE</p>
         </div>

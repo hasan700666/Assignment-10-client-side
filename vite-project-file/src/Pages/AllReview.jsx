@@ -26,7 +26,9 @@ const AllReview = () => {
     //console.log(search);
 
     if (search) {
-      fetch(`http://localhost:3000/searchPublicFoodCollection?search=${search}`)  //--> id = 17
+      fetch(
+        `https://foodloverserver.vercel.app/searchPublicFoodCollection?search=${search}`
+      ) //--> id = 17
         .then((res) => res.json())
         .then((data) => {
           //console.log(data);

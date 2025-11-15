@@ -16,38 +16,50 @@ const MyReviewTable = ({ data, setData }) => {
   };
 
   const hendleDelete = () => {
-    fetch(`http://localhost:3000/privateFoodCollection/${data._id}`, {       //--> id = 9
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${user.accessToken}`
-      },
-    })
+    fetch(
+      `https://foodloverserver.vercel.app/privateFoodCollection/${data._id}`,
+      {
+        //--> id = 9
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((d) => {
         //console.log(data);
-        fetch(`http://localhost:3000/publicFoodCollection/${data.foodId}`, {          //--> id = 10
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${user.accessToken}`
-          },
-        })
+        fetch(
+          `https://foodloverserver.vercel.app/publicFoodCollection/${data.foodId}`,
+          {
+            //--> id = 10
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        )
           .then((res) => res.json())
           .then((d) => {
             console.log(d);
-            fetch(`http://localhost:3000/favoriteCollection?foodId=${data.foodId}`,{  //--> id = 15
-              method: "DELETE",
-              headers:{
-                "Content-Type": "application/json",
-                authorization: `Bearer ${user.accessToken}`
+            fetch(
+              `https://foodloverserver.vercel.app/favoriteCollection?foodId=${data.foodId}`,
+              {
+                //--> id = 15
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                  authorization: `Bearer ${user.accessToken}`,
+                },
               }
-            })
+            )
               .then((res) => res.json())
               .then((d) => {
                 console.log(d);
                 fetch(
-                  `http://localhost:3000/privateFoodCollection?email=${user.email}`, //--> id = 5
+                  `https://foodloverserver.vercel.app/privateFoodCollection?email=${user.email}`, //--> id = 5
                   {
                     headers: {
                       authorization: `Bearer ${user.accessToken}`,
@@ -58,7 +70,6 @@ const MyReviewTable = ({ data, setData }) => {
                   .then((d) => {
                     //console.log(d);
                     setData(d);
-                    //fetch("http://localhost:3000/publicFoodCollection/")
                   });
               })
               .catch((e) => console.log(e));

@@ -9,11 +9,15 @@ const MyReviews = () => {
   const { user } = use(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/privateFoodCollection?email=${email}`, {    //--> id = 5
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://foodloverserver.vercel.app/privateFoodCollection?email=${email}`,
+      {
+        //--> id = 5
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((d) => {
         console.log(d);

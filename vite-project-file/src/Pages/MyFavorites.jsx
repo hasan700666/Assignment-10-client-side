@@ -14,11 +14,15 @@ const MyFavorites = () => {
   //console.log(email);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/favoriteCollection?email=${email}`, {  //id = 12
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://foodloverserver.vercel.app/favoriteCollection?email=${email}`,
+      {
+        //id = 12
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((feachData) => {
         console.log(feachData);

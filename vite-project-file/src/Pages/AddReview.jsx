@@ -50,13 +50,13 @@ const AddReview = () => {
 
     //console.log(dock);
 
-    fetch("http://localhost:3000/publicFoodCollection", {  //-->id = 3
+    fetch("https://foodloverserver.vercel.app/publicFoodCollection", {
+      //-->id = 3
       method: "POST",
       headers: {
         "Content-Type": "application/json",
 
         authorization: `Bearer ${user.accessToken}`,
-      
       },
       body: JSON.stringify(dock),
     })
@@ -80,7 +80,8 @@ const AddReview = () => {
 
         //console.log(dockWithEmail);
 
-        fetch("http://localhost:3000/privateFoodCollection", {  //--> id = 4
+        fetch("https://foodloverserver.vercel.app/privateFoodCollection", {
+          //--> id = 4
           method: "POST",
           headers: {
             "Content-Type": "application/json",
