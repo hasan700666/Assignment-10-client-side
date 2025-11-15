@@ -37,9 +37,15 @@ const MyFavorites = () => {
 
   return (
     <div>
-      {Data?.map((data) => (
-        <MyFavoritesCard data={data} setData={setData}></MyFavoritesCard>
-      ))}
+      <div className="text-center m-10 text-6xl pt-10">
+        <span className="text-[#bf1e2e]">My Favorites </span>
+        <span className="text-[#ee1c25]"> Collection</span>
+      </div>
+      <div className="grid grid-cols-4 gap-5 mb-10">
+        {Data?.map((data) => (
+          <MyFavoritesCard data={data} setData={setData}></MyFavoritesCard>
+        ))}
+      </div>
     </div>
   );
 };

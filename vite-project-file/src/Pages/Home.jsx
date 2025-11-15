@@ -19,7 +19,7 @@ const Home = () => {
   }
   return (
     <div className="my-20">
-      <div className="text-center m-10 text-6xl"><span className="text-[#bf1e2e]">Featured</span><span className="text-[#ee1c25]"> Reviews</span></div>
+      <div className="text-center m-10 text-6xl pt-10"><span className="text-[#bf1e2e]">Featured</span><span className="text-[#ee1c25]"> Reviews</span></div>
       <div>
         <div className="grid grid-cols-3 gap-5">
           {data.map((data) => (

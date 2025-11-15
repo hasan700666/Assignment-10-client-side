@@ -27,7 +27,7 @@ const AllReview = () => {
 
     if (search) {
       fetch(
-        `https://foodloverserver.vercel.app/searchPublicFoodCollection?search=${search}`
+        `https://foodloverserver.vercel.app/searchPublicFoodCollection?search=${search}` //--> id = 17
       ) //--> id = 17
         .then((res) => res.json())
         .then((data) => {
@@ -44,9 +44,13 @@ const AllReview = () => {
 
   return (
     <div>
-      <div>
-        <form>
-          <label className="input">
+      <div className="text-center m-10 text-6xl pt-10">
+        <span className="text-[#bf1e2e]">Our All Food</span>
+        <span className="text-[#ee1c25]"> Reviews</span>
+      </div>
+      <div className="flex justify-center items-center">
+        <form className="">
+          <label className="input border-2 border-[#bf1e2e]">
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +77,7 @@ const AllReview = () => {
           </label>
         </form>
       </div>
-      <div>
+      <div className="grid grid-cols-4 gap-5 my-10">
         {data.map((data) => (
           <Card data={data}></Card>
         ))}

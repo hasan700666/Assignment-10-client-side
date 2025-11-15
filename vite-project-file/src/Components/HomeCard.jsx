@@ -11,12 +11,12 @@ const HomeCard = ({ data }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="card_des_css w-[400px] h-[600px]">
+      <div className="card_des_css w-[400px] h-[620px]">
         <div className="flex items-center flex-col ">
           <figure className="m-5 ">
-            <img src={data.foodImage} alt="Shoes" className="rounded-xl" />
+            <img src={data.foodImage} alt="img" className="rounded-xl w-[350px] h-[220px] border-8 border-[#ffeded] object-cover" />
           </figure>
-          <div className="bg-[#ffeded] mx-10 my-5 rounded-xl w-[350px]">
+          <div className="bg-[#ffeded] mx-10 rounded-xl w-[350px] mb-5 border-8 border-[#ffeded]">
             <h2 className="text-center text-3xl text-[#ee1c25] m-3">
               {data.foodName}
             </h2>
@@ -42,7 +42,7 @@ const HomeCard = ({ data }) => {
             </div>
             <div className="text-center">
               <NavLink to={`/foodDetails/${data._id}`}>
-                <button className="btn">Details</button>
+                <button className="button_css">Details</button>
               </NavLink>
             </div>
           </div>
