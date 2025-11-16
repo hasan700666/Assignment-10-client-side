@@ -35,6 +35,7 @@ const AddReview = () => {
       ster == false ||
       price == false
     ) {
+      setLoader(false);
       return toast.error("All fields are required");
     }
 
