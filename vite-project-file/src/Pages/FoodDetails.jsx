@@ -9,7 +9,7 @@ const FoodDetails = () => {
 
   const { loader, user } = use(AuthContext);
 
-  console.log(user.accessToken);
+  //console.log(user.accessToken);
 
   useEffect(() => {
     fetch(`https://foodloverserver.vercel.app/publicFoodCollection/${id}`, {
@@ -23,7 +23,9 @@ const FoodDetails = () => {
         setData(data);
         setShowLoader(false);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        //console.log(e)
+      });
   }, []);
 
   if (loader) {

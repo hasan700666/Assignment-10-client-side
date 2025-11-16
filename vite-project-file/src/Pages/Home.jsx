@@ -27,7 +27,7 @@ const Home = () => {
     fachData();
   }, []);
 
-  console.log(fachData);
+  //console.log(fachData);
 
   if (loader && loader2) {
     return (

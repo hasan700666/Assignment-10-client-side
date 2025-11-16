@@ -40,7 +40,7 @@ const MyFavoritesCard = ({ data, setData, setLoader }) => {
           });
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   };
 

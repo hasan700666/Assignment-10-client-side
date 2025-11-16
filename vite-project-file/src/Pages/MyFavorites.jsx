@@ -25,7 +25,7 @@ const MyFavorites = () => {
     )
       .then((res) => res.json())
       .then((feachData) => {
-        console.log(feachData);
+        //console.log(feachData);
         setData(feachData);
         setLoader(false)
       })

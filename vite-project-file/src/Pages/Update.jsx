@@ -29,7 +29,9 @@ const Update = () => {
         setLoader(false);
         setData(d);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        //console.log(e)
+      });
   }, []);
 
   const hendleSubmit = (e) => {
@@ -127,10 +129,12 @@ const Update = () => {
                 setLoader(false);
                 toast.success("Done");
               })
-              .catch((e) => console.log(e));
+              .catch((e) => {
+                //console.log(e)
+              });
           })
           .catch((e) => {
-            console.log(e);
+            //console.log(e);
           });
       })
       .catch((e) => {

@@ -43,7 +43,7 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
         )
           .then((res) => res.json())
           .then((d) => {
-            console.log(d);
+            //console.log(d);
             fetch(
               `https://foodloverserver.vercel.app/favoriteCollection?foodId=${data.foodId}`,
               {
@@ -57,7 +57,7 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
             )
               .then((res) => res.json())
               .then((d) => {
-                console.log(d);
+                //console.log(d);
                 fetch(
                   `https://foodloverserver.vercel.app/privateFoodCollection?email=${user.email}`, //--> id = 5
                   {
@@ -72,9 +72,13 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
                     setData(d);
                   });
               })
-              .catch((e) => console.log(e));
+              .catch((e) => {
+                //console.log(e)
+              });
           })
-          .catch((e) => console.log(e));
+          .catch((e) => {
+            //console.log(e)
+          });
       })
       .catch((e) => {});
   };

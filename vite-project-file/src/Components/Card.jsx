@@ -31,7 +31,7 @@ const Card = ({ data, setLoader2 }) => {
       userName: data.userName,
     };
 
-    console.log(dock);
+    //console.log(dock);
 
     fetch(
       `https://foodloverserver.vercel.app/favoriteCollection`, // id = 11
