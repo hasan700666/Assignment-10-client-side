@@ -4,7 +4,7 @@ const TopFoodBloggers = ({ data }) => {
   //console.log(data);
 
   return (
-    <div className="m-10 flex justify-center items-center flex-col bg-[#ffeded] rounded-3xl p-10">
+    <div className="lg:m-10 m-5 flex justify-center items-center flex-col bg-[#ffeded] rounded-3xl p-10">
       <div className="">
         <img src={data.img} alt="img" className="rounded-full" />
       </div>

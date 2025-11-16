@@ -4,6 +4,8 @@ import { AuthContext } from "../Context/AuthContext/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 
 const MyProfile = () => {
+  const [loader, setLoader] = useState(false);
+
   const {
     SingUser,
     setUser,
@@ -14,13 +16,12 @@ const MyProfile = () => {
   } = use(AuthContext);
   const [Update, setUpdate] = useState(false);
 
-  const notify = () => toast("Here is your toast.");
-
   const hendleUpdateProfile = () => {
     setUpdate(!Update);
   };
 
   const hendleSubmite = (e) => {
+    setLoader(true);
     e.preventDefault();
 
     const name = e.target.name.value;
@@ -28,16 +29,11 @@ const MyProfile = () => {
 
     UpdateUser(name, photo)
       .then((result) => {
-        // Profile updated!
-        //console.log(result);
         UpdateNamePhotos(name, photo);
-        notify();
+        setLoader(false);
+        toast.success("Done");
       })
-      .catch((error) => {
-        // An error occurred
-        // ...
-        //console.log(error.message);
-      });
+      .catch((error) => {});
   };
 
   return (
@@ -47,45 +43,55 @@ const MyProfile = () => {
       </div>
       <div>
         {Update ? (
-          <>
-            <div>
-              <div className="hero min-h-screen ">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                  <div className="card w-full shrink-0 shadow-2xl bg-[#ffeded]">
-                    <div className="card-body bg-[#ffeded] rounded-4xl pb-15">
-                      <h1 className="text-5xl font-bold m-10">Update now!</h1>
-                      <form onSubmit={hendleSubmite}>
-                        <fieldset className="fieldset">
-                          <label className="label">Name</label>
-                          <input
-                            type="name"
-                            className="input w-full"
-                            placeholder="Enter your Name"
-                            name="name"
-                          />
-                          <label className="label">Photo</label>
-                          <input
-                            type="text"
-                            className="input w-full"
-                            placeholder="Enter your photo-URL here"
-                            name="photo"
-                          />
+          <div>
+            {loader ? (
+              <div className="h-[100vh] flex justify-center items-center">
+                <span className="loading loading-infinity size-20"></span>
+              </div>
+            ) : (
+              <>
+                <div>
+                  <div className="hero min-h-screen ">
+                    <div className="hero-content flex-col lg:flex-row-reverse">
+                      <div className="card w-full shrink-0 shadow-2xl bg-[#ffeded]">
+                        <div className="card-body bg-[#ffeded] rounded-4xl pb-15">
+                          <h1 className="text-5xl font-bold m-10">
+                            Update now!
+                          </h1>
+                          <form onSubmit={hendleSubmite}>
+                            <fieldset className="fieldset">
+                              <label className="label">Name</label>
+                              <input
+                                type="name"
+                                className="input w-full"
+                                placeholder="Enter your Name"
+                                name="name"
+                              />
+                              <label className="label">Photo</label>
+                              <input
+                                type="text"
+                                className="input w-full"
+                                placeholder="Enter your photo-URL here"
+                                name="photo"
+                              />
 
-                          <button className="button_css mt-5">Done</button>
-                        </fieldset>
-                      </form>
-                      <button
-                        className="button_css"
-                        onClick={hendleUpdateProfile}
-                      >
-                        Go to My Profile page
-                      </button>
+                              <button className="button_css mt-5">Done</button>
+                            </fieldset>
+                          </form>
+                          <button
+                            className="button_css"
+                            onClick={hendleUpdateProfile}
+                          >
+                            Go to My Profile page
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </>
+              </>
+            )}
+          </div>
         ) : (
           <>
             <div className="flex justify-center items-center">
@@ -123,7 +129,6 @@ const MyProfile = () => {
 
                       {/* Split into two parts */}
                       <div className="grid md:grid-cols-2 gap-6">
-                        {/* Left Column */}
                         <div className="space-y-3 text-sm">
                           <div>
                             <p className="text-gray-400">My Name</p>
@@ -139,8 +144,6 @@ const MyProfile = () => {
                             <p>non</p>
                           </div>
                         </div>
-
-                        {/* Right Column */}
                         <div className="space-y-3 text-sm">
                           <div>
                             <p className="text-gray-400">Phone Number</p>
@@ -172,16 +175,8 @@ const MyProfile = () => {
           </>
         )}
       </div>
-      <div>
-        <img src={img} alt="" className="xl:w-70 lg:w-50 hidden" />
-      </div>
     </div>
   );
 };
 
 export default MyProfile;
-
-{
-  /**
-   */
-}

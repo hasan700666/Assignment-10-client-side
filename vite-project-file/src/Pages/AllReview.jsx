@@ -6,13 +6,15 @@ import Card from "../Components/Card";
 const AllReview = () => {
   const lodeData = useLoaderData();
 
+  const [loader2, setLoader2] = useState(false);
+
   const [data, setData] = useState(lodeData);
 
   //console.log(data);
 
   const { loader } = use(AuthContext);
 
-  if (loader) {
+  if (loader && !lodeData && loader2) {
     return (
       <div className="h-[100vh] flex justify-center items-center">
         <span className="loading loading-infinity size-20"></span>
@@ -21,9 +23,8 @@ const AllReview = () => {
   }
 
   const hendleSearch = (e) => {
+    setLoader2(true);
     const search = e.target.value;
-
-    //console.log(search);
 
     if (search) {
       fetch(
@@ -33,17 +34,16 @@ const AllReview = () => {
         .then((data) => {
           //console.log(data);
           setData(data);
+          setLoader2(false);
         })
         .catch((e) => {
           //console.log(e);
         });
     } else {
       setData(lodeData);
+      setLoader2(false);
     }
   };
-
-  console.log(data);
-  
 
   return (
     <div>
@@ -80,19 +80,25 @@ const AllReview = () => {
           </label>
         </form>
       </div>
-      <div>
-        {data.length ? (
-          <div className="grid grid-cols-4 gap-5 my-10">
-            {data.map((data) => (
-              <Card data={data}></Card>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center min-h-screen flex justify-center items-center text-4xl">
-            Nothing!
-          </div>
-        )}
-      </div>
+      {loader2 ? (
+        <div className="h-[100vh] flex justify-center items-center">
+          <span className="loading loading-infinity size-20"></span>
+        </div>
+      ) : (
+        <div>
+          {data.length ? (
+            <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-5 my-10">
+              {data.map((data) => (
+                <Card data={data} setLoader2={setLoader2}></Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center min-h-screen flex justify-center items-center text-4xl">
+              Nothing!
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

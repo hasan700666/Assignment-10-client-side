@@ -1,20 +1,16 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
 import { FaStar } from "react-icons/fa";
 
-const MyFavoritesCard = ({ data, setData }) => {
+const MyFavoritesCard = ({ data, setData, setLoader }) => {
   const navigate = useNavigate();
 
   const { user } = use(AuthContext);
 
-  // console.log(data);
-
-  //console.log(data.userEmail);
-  //console.log("heoool");
-
   const hendleDelete = () => {
+    setLoader(true);
     fetch(`https://foodloverserver.vercel.app/favoriteCollection/${data._id}`, {
       //--> id = 13
       method: "DELETE",
@@ -39,9 +35,9 @@ const MyFavoritesCard = ({ data, setData }) => {
           .then((feachData) => {
             //console.log(feachData);
             setData(feachData);
+            setLoader(false);
+            toast.success("Done");
           });
-        toast.success("Done");
-        //navigate(`/MyFavorites/${data.userEmail}`);
       })
       .catch((e) => {
         console.log(e);
@@ -88,7 +84,7 @@ const MyFavoritesCard = ({ data, setData }) => {
                 </div>
               </div>
               <div className="text-center">
-                <NavLink to={`/foodDetails/${data._id}`}>
+                <NavLink to={`/foodDetails/${data.foodId}`}>
                   <button className="button_css mr-2">Details</button>
                 </NavLink>
                 <button onClick={hendleDelete} className="button_css ml-2">

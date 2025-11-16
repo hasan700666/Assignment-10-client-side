@@ -9,16 +9,19 @@ import About from "../Components/About";
 const Home = () => {
   const data = useLoaderData();
 
+  const [loader2, setLoader] = useState(true);
+
   const [fachData, setData] = useState([]);
 
   const { loader } = use(AuthContext);
 
   useEffect(() => {
     const fachData = async () => {
-      const fachData = await fetch("http://localhost:3000/topFoodBloggers");
+      const fachData = await fetch(
+        "https://foodloverserver.vercel.app/topFoodBloggers"
+      );
       const res = await fachData.json();
-      console.log(res);
-
+      setLoader(false);
       setData(res);
     };
     fachData();
@@ -26,13 +29,14 @@ const Home = () => {
 
   console.log(fachData);
 
-  if (loader) {
+  if (loader && loader2) {
     return (
       <div className="h-[100vh] flex justify-center items-center">
         <span className="loading loading-infinity size-20"></span>
       </div>
     );
   }
+
   return (
     <div className="my-20">
       <div>
@@ -45,7 +49,7 @@ const Home = () => {
         </div>
         <div>
           {data.length ? (
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-5">
               {data.map((data) => (
                 <HomeCard data={data}></HomeCard>
               ))}
@@ -62,23 +66,23 @@ const Home = () => {
           <span className="text-[#bf1e2e]">Featured Food </span>
           <span className="text-[#ee1c25]"> Bloggers</span>
         </div>
-        <div className="flex justify-center items-center mx-30">
+        <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-5 lg:mx-30 md:mx-20 sm:mx-10">
           {fachData.map((data) => (
             <TopFoodBloggers data={data}></TopFoodBloggers>
           ))}
         </div>
         <div className="bg-[#ffeded]"></div>
       </div>
-      <div className="mx-30">
+      <div className="sm:mx-30 mx-5">
         <div className="text-center m-10 text-6xl pt-10">
           <span className="text-[#bf1e2e]">About </span>
           <span className="text-[#ee1c25]"> Us</span>
         </div>
-        <div className="flex items-center bg-[#ffeded] p-10 rounded-3xl justify-center flex-col">
+        <div className="flex items-center bg-[#ffeded] lg:p-10 p-5 rounded-3xl justify-center flex-col">
           <div>
             <About></About>
           </div>
-          <div className="text-2xl text-center">
+          <div className="lg:text-2xl md:text-xl sm:text-lg text-xs text-center p-5">
             <span>Local Food Lovers Network</span> is a community-driven
             platform designed for people who love exploring and sharing great
             food. Whether it’s a hidden street-food stall, a cozy restaurant, or

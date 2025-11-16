@@ -5,7 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
 import { FaStar } from "react-icons/fa6";
 
-const MyReviewTable = ({ data, setData, index }) => {
+const MyReviewTable = ({ data, setData, index, setLoader }) => {
   const navigate = useNavigate();
 
   const { user } = use(AuthContext);
@@ -15,6 +15,7 @@ const MyReviewTable = ({ data, setData, index }) => {
   };
 
   const hendleDelete = () => {
+    setLoader(true);
     fetch(
       `https://foodloverserver.vercel.app/privateFoodCollection/${data._id}`,
       {
@@ -67,19 +68,24 @@ const MyReviewTable = ({ data, setData, index }) => {
                 )
                   .then((res) => res.json())
                   .then((d) => {
-                    //console.log(d);
+                    setLoader(false);
                     setData(d);
                   });
               })
               .catch((e) => console.log(e));
           })
           .catch((e) => console.log(e));
-        toast.success("Done");
-        //navigate(`/MyReviews/${data.userEmail}`);
       })
-      .catch((e) => {
-        //console.log(e);
-      });
+      .catch((e) => {});
+  };
+
+  const formatDate = (isoString) => {
+    const d = new Date(isoString);
+
+    return d.toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
   };
 
   return (
@@ -110,14 +116,31 @@ const MyReviewTable = ({ data, setData, index }) => {
           </p>
         </button>
       </th>
+      <th>{formatDate(data.date)}</th>
       <th>
-        <button onClick={hendleUpdate} className="button_css mr-2">
+        <button onClick={hendleUpdate} className="button_css sm:mr-2 mr-0 my-1">
           Update
         </button>
-        <button onClick={hendleDelete} className="button_css ml-2">
-          Delete
-        </button>
+        <button className="button_css sm:ml-2 ml-0 my-1" onClick={() => document.getElementById("my_modal_1").showModal()}>Delete</button>
       </th>
+      <div>
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Hello!</h3>
+            <p className="py-4">
+              Are you Shore You Want To Delete this?
+            </p>
+            <div className="modal-action">
+              <form method="dialog">
+                <button className="button_css mr-2" onClick={hendleDelete}>Delete</button>
+                <button className="button_css ml-2">
+                  Close
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      </div>
     </tr>
   );
 };

@@ -211,3 +211,23 @@ box-shadow: 0 0 30px #ffff, 0 0 60px #bf1e2e;
   animation: rotBGimg 3.5s linear infinite;
 } */
 
+@media (max-width: 600px) {
+  .img_swiper {width: 150px;}
+}
+
+@media (max-width: 530px) {
+  .img_swiper {width: 100px;}
+}
+
+@media (max-width: 476px) {
+  .img_swiper_2 {width: 0px;}
+  .img_swiper {width: 0px;}
+  .Swiper_css {height: 300px ;}
+  .text_css {text-align: center;}
+  .text_css_2 {display: none;}
+  .button_css{font-size: 10px;}
+  .text_css_3 {font-size: 15px;}
+}
+
+
+

@@ -5,25 +5,25 @@ import img3 from "../assets/images/Panta_Ilish.jpg";
 
 const About = () => {
   return (
-    <div>
-        <div className="relative h-[250px] flex items-center justify-center">
-          <div className="absolute left-1/2 -translate-x-full w-[300px] h-[200px] transition-all">
-            <div className="w-full h-full rounded-4xl overflow-hidden">
-              <img src={img3} alt="" />
-            </div>
+    <div className="">
+      <div className="relative lg:h-[300px] md:h-[200px] sm:h-[100px] h-[50px] flex items-center justify-center">
+        <div className="absolute left-1/2 -translate-x-full lg:w-[300px] sm:w-[200px] w-[100px] lg:h-[200px] md:h-[120px] sm:h-[100px] h-[50px] transition-all">
+          <div className="w-full h-full rounded-4xl overflow-hidden">
+            <img src={img3} alt="" />
           </div>
-          <div className="absolute w-[300px] h-[203px] z-30 shadow-2xl transition-all duration-300">
-            <div className="w-full h-full rounded-4xl overflow-hidden border-4 border-[#ffeded] ">
-              <img src={img2} alt="" />
-            </div>
+        </div>
+        <div className="absolute lg:w-[300px] md:w-[200px] sm:w-[200px] w-[100px] lg:h-[200px] md:h-[120px] sm:h-[100px] h-[50px] z-30 shadow-2xl transition-all duration-300">
+          <div className="w-full h-full rounded-4xl overflow-hidden border-4 border-[#ffeded] ">
+            <img src={img2} alt="" />
           </div>
-          <div className="absolute left-1/2 translate-x-0 w-[300px] h-[200px] transition-all">
-            <div className="w-full h-full rounded-4xl overflow-hidden">
-              <img src={img1} alt="" />
-            </div>
+        </div>
+        <div className="absolute left-1/2 translate-x-0 lg:w-[300px] sm:w-[200px] w-[100px] md:w-[200px] md:h-[120px] lg:h-[200px] sm:h-[100px] h-[50px] transition-all">
+          <div className="w-full h-full rounded-4xl overflow-hidden">
+            <img src={img1} alt="" />
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

@@ -4,14 +4,17 @@ import { AuthContext } from "../Context/AuthContext/AuthContext";
 import { NavLink } from "react-router";
 import { FaStar } from "react-icons/fa";
 
-const Card = ({ data }) => {
+const Card = ({ data, setLoader2 }) => {
   const { user } = use(AuthContext);
 
   //console.log(data);
   //console.log(user);
 
   const hendleFavorites = () => {
+    setLoader2(true);
+
     if (!user) {
+      setLoader2(false);
       return toast.error("Please Log in");
     }
 
@@ -43,11 +46,11 @@ const Card = ({ data }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setLoader2(false);
         toast.success("Done");
       })
       .catch((e) => {
-        //console.log(e);
+        setLoader2(false);
       });
   };
 
@@ -94,7 +97,9 @@ const Card = ({ data }) => {
                 <NavLink to={`/foodDetails/${data._id}`}>
                   <button className="button_css mr-2">Details</button>
                 </NavLink>
-                <button onClick={hendleFavorites} className="button_css ml-2">Add To favorites</button>
+                <button onClick={hendleFavorites} className="button_css ml-2">
+                  Add To favorites
+                </button>
               </div>
             </div>
           </div>

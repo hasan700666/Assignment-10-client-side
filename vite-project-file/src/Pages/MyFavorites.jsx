@@ -8,10 +8,10 @@ const MyFavorites = () => {
 
   const [Data, setData] = useState([]);
 
+  const [loader,setLoader] = useState(true)
+
   const { email } = useParams();
 
-  //console.log(user);
-  //console.log(email);
 
   useEffect(() => {
     fetch(
@@ -27,13 +27,20 @@ const MyFavorites = () => {
       .then((feachData) => {
         console.log(feachData);
         setData(feachData);
+        setLoader(false)
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   }, []);
 
-  //console.log(Data);
+  if (loader) {
+    return (
+      <div className="h-[100vh] flex justify-center items-center">
+        <span className="loading loading-infinity size-20"></span>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -43,9 +50,9 @@ const MyFavorites = () => {
       </div>
       <div>
         {Data.length ? (
-          <div className="grid grid-cols-4 gap-5 mb-10">
+          <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-5 mb-10">
             {Data?.map((data) => (
-              <MyFavoritesCard data={data} setData={setData}></MyFavoritesCard>
+              <MyFavoritesCard data={data} setData={setData} setLoader={setLoader}></MyFavoritesCard>
             ))}
           </div>
         ) : (

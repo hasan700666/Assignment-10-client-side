@@ -7,7 +7,7 @@ const MyReviews = () => {
   const { email } = useParams();
   const [data, setData] = useState([]);
   const { user } = use(AuthContext);
-  const [no, setNo] = useState(0);
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -21,15 +21,22 @@ const MyReviews = () => {
     )
       .then((res) => res.json())
       .then((d) => {
-        console.log(d);
+        //console.log(d);
         setData(d);
+        setLoader(false);
       })
       .catch((e) => {
         //console.log(e);
       });
   }, []);
 
-  console.log(data);
+  if (loader) {
+    return (
+      <div className="h-[100vh] flex justify-center items-center">
+        <span className="loading loading-infinity size-20"></span>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -48,12 +55,13 @@ const MyReviews = () => {
                   <th>Restaurant Name</th>
                   <th>Price</th>
                   <th>Rating</th>
+                  <th>Date</th>
                   <th className="w-80">Update Or Delete</th>
                 </tr>
               </thead>
               <tbody>
                 {data.map((item, index) => (
-                  <MyReviewTable data={item} index={index} setData={setData} />
+                  <MyReviewTable data={item} index={index} setData={setData} setLoader={setLoader} />
                 ))}
               </tbody>
             </table>

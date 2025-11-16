@@ -30,6 +30,29 @@ const Navbar = () => {
     </>
   );
 
+  const li2 = (
+    <>
+      <NavLink to="/" className="my-2">
+        Home
+      </NavLink>
+      <NavLink to="/AllReview" className="my-2">
+        All Review
+      </NavLink>
+      <NavLink to="/MyProfile" className="my-2">
+        My Profile
+      </NavLink>
+      <NavLink to="/AddReview" className="my-2">
+        Add Reviews
+      </NavLink>
+      <NavLink to={`/MyReviews/${user?.email}`} className="my-2">
+        My Reviews
+      </NavLink>
+      <NavLink to={`/MyFavorites/${user?.email}`} className="my-2">
+        My Favorites
+      </NavLink>
+    </>
+  );
+
   const hendleSingOut = () => {
     SingOut()
       .then((res) => {
@@ -81,7 +104,7 @@ const Navbar = () => {
                 tabIndex="-1"
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
-                {}
+                {li2}
               </ul>
             </div>
             <NavLink className="card_css text-xl flex items-center justify-center mx-5">
