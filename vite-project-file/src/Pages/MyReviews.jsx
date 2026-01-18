@@ -2,11 +2,13 @@ import React, { use, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MyReviewTable from "../Components/MyReviewTable";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 
 const MyReviews = () => {
   const { email } = useParams();
   const [data, setData] = useState([]);
   const { user } = use(AuthContext);
+  const { isDarkMode } = use(ThemeContext);
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {

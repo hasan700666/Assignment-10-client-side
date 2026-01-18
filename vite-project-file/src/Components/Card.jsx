@@ -1,11 +1,13 @@
 import React, { use } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 import { NavLink } from "react-router";
 import { FaStar } from "react-icons/fa";
 
 const Card = ({ data, setLoader2 }) => {
   const { user } = use(AuthContext);
+  const { isDarkMode } = use(ThemeContext);
 
   //console.log(data);
   //console.log(user);
@@ -69,21 +71,21 @@ const Card = ({ data, setLoader2 }) => {
                 className="rounded-xl w-[350px] h-[220px] border-8 border-[#ffeded] object-cover"
               />
             </figure>
-            <div className="bg-[#ffeded] mx-10 rounded-xl w-[350px] mb-5 border-8 border-[#ffeded]">
+            <div className={`mx-10 rounded-xl w-[350px] mb-5 border-8 ${isDarkMode ? 'bg-[#1a1a1a] border-[#404040]' : 'bg-[#ffeded] border-[#ffeded]'}`}>
               <h2 className="text-center text-3xl text-[#ee1c25] m-3">
                 {data.foodName}
               </h2>
               <div className=" mx-3 rounded-2xl">
-                <p className="p-1 py-2 rounded-2xl bg-white">
+                <p className={`p-1 py-2 rounded-2xl ${isDarkMode ? 'bg-[#2d2d2d] text-white' : 'bg-white'}`}>
                   <div className="text-center py-2">
                     <samp className="text-[#bf1e2e]">Restaurant</samp>
                     <samp className="text-[#ee1c25]"> Name</samp>
                   </div>
                   <div className="text-center">{data.restaurantName}</div>
-                  <div className="text-center text-xs">{data.location}</div>
+                  <div className={`text-center text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{data.location}</div>
                 </p>
-                <div className="my-2 bg-white rounded-2xl py-2">
-                  <p className="p-1 text-center text-2xl text-[#bf1e2e]">
+                <div className={`my-2 rounded-2xl py-2 ${isDarkMode ? 'bg-[#2d2d2d]' : 'bg-white'}`}>
+                  <p className={`p-1 text-center text-2xl ${isDarkMode ? 'text-[#ff6b6b]' : 'text-[#bf1e2e]'}`}>
                     {data.userName}
                   </p>
                   <div className="bg-[#bf1e2e] rounded-2xl mx-30 ">

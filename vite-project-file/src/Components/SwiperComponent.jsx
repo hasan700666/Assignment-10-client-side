@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 
 import img1 from "../assets/images/mas.jpg";
 import img2 from "../assets/images/kzbcnbuduzkbk9hjjiwz.webp";
@@ -12,10 +12,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { NavLink } from "react-router";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 
 const SwiperComponent = () => {
+  const { isDarkMode } = use(ThemeContext);
   return (
-    <div className="p-20 bg-[#ffeded]">
+    <div className={`p-20 ${isDarkMode ? 'bg-[#1a1a1a]' : 'bg-[#ffeded]'}`}>
       <Swiper
         //onSlideChange={() => console.log("slide change")}
         //onSwiper={(swiper) => console.log(swiper)}
@@ -34,12 +36,12 @@ const SwiperComponent = () => {
         }}
         className="mySwiper sm:h-150 h-100 w-full Swiper_css"
       >
-        <SwiperSlide className="bg-white rounded-3xl ">
+        <SwiperSlide className={`${isDarkMode ? 'bg-[#2d2d2d]' : 'bg-white'} rounded-3xl `}>
           <div className="m-10">
             <div className="w-full lg:py-16 md:py-9 py-0 px-6">
               <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
                 <div className="sm:space-y-6 space-y-2 text_css">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight ${isDarkMode ? 'text-white' : 'text-black'}`}>
                     Your Taste, <br />
                     Your Reviews{" "}
                     <span className="text-[#ee1c25] text_css_3">
@@ -47,7 +49,7 @@ const SwiperComponent = () => {
                     </span>
                   </h1>
 
-                  <p className="text-gray-500 sm:text-2xl text-xs text_css_2">
+                  <p className={`sm:text-2xl text-xs text_css_2 ${isDarkMode ? 'text-gray-300' : 'text-gray-500'}`}>
                     connect platform. Create, deploy, and manage
                   </p>
 
@@ -57,17 +59,17 @@ const SwiperComponent = () => {
                   <div>
                     <div className="relative flex justify-center items-center w-full sm:h-[350px] h-0">
                       <div
-                        className="
+                        className={`
                             absolute
                             md:w-[40%]
                             w-[30%]
                             h-[300%]
-                          bg-[#ffeded]
+                          ${isDarkMode ? 'bg-[#3d3d3d]' : 'bg-[#ffeded]'}
                             rotate-[-25deg]
                             rounded-3xl
                             md:block
                             hidden
-                        "
+                        `}
                       ></div>
                       <img
                         src={img10}
@@ -81,16 +83,16 @@ const SwiperComponent = () => {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="bg-white rounded-3xl flex justify-center">
+        <SwiperSlide className={`${isDarkMode ? 'bg-[#2d2d2d]' : 'bg-white'} rounded-3xl flex justify-center`}>
           <div className="flex md:justify-between md:items-center md:h-full h-100 md:flex-row flex-col md:m-0 m-10 md:text-left text-center">
             <div className="lg:ml-30 md:ml-20 ml-0">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+              <div className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${isDarkMode ? 'text-white' : 'text-black'}`}>
                 Add Your Favorite <br /> Dishes
               </div>
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#de1e2e] my-2">
                 &
               </div>
-              <div className="text-xs sm:text-xl md:text-2xl lg:text-3xl">
+              <div className={`text-xs sm:text-xl md:text-2xl lg:text-3xl ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 Share Your Experience
               </div>
               <div>

@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import img from "../assets/images/logo.png";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 import { useParams } from "react-router";
 
 const Update = () => {
@@ -12,6 +13,7 @@ const Update = () => {
   //console.log(data._id);
 
   const { user } = use(AuthContext);
+  const { isDarkMode } = use(ThemeContext);
 
   //console.log(user);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -6,10 +6,12 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaDiscord } from "react-icons/fa";
 import img from "../assets/images/logo.png";
 import { NavLink } from "react-router";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 
 const Footer = () => {
+  const { isDarkMode } = use(ThemeContext);
   return (
-    <div className="bg_css text-black py-10 px-6">
+    <div className={`bg_css ${isDarkMode ? 'text-white' : 'text-black'} py-10 px-6`}>
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
           <h2 className="font-bold text-lg">
@@ -50,7 +52,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-gray-700 my-8"></div>
+      <div className={`border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-300'} my-8`}></div>
 
       <div className="flex justify-center space-x-4 text-lg">
         <a href="https://www.facebook.com/hasanal.muttaki">

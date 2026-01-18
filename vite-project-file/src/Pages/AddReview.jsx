@@ -6,10 +6,12 @@ import { data, NavLink, useNavigate } from "react-router";
 import img from "../assets/images/logo.png";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const AddReview = () => {
   const { user } = use(AuthContext);
+  const { isDarkMode } = use(ThemeContext);
 
   const [loader, setLoader] = useState(false);
 

@@ -2,9 +2,11 @@ import React, { use, useState } from "react";
 import img from "../assets/images/logo.png";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 
 const Navbar = () => {
   const { user, SingOut, setUser } = use(AuthContext);
+  const { isDarkMode, toggleTheme } = use(ThemeContext);
   const [btn, setbtn] = useState(false);
 
   const li = (
@@ -60,7 +62,7 @@ const Navbar = () => {
         setUser(res);
         //console.log("sing out");
       })
-      .catch((error) => {
+      .catch(() => {
         // An error happened.
         //console.log(error.message);
       });
@@ -124,6 +126,35 @@ const Navbar = () => {
             {user ? (
               <>
                 <div className="flex items-center justify-center">
+                  <button
+                    onClick={toggleTheme}
+                    className="btn btn-ghost btn-circle mx-2"
+                    title={isDarkMode ? "Light mode" : "Dark mode"}
+                  >
+                    {isDarkMode ? (
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.293 2.293a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zm2.828 4.293a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm2.828 4.293l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 111.414-1.414zM10 14a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.293 2.293l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 111.414-1.414zM3.707 5.707a1 1 0 010 1.414l-.707.707A1 1 0 11.586 5.293l.707-.707a1 1 0 011.414 0zM5 10a5 5 0 1110 0 5 5 0 01-10 0z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                      </svg>
+                    )}
+                  </button>
                   <div className="dropdown dropdown-end">
                     <button className="profile_css mx-5" onClick={btn_click}>
                       <img
@@ -162,6 +193,35 @@ const Navbar = () => {
               </>
             ) : (
               <>
+                <button
+                  onClick={toggleTheme}
+                  className="btn btn-ghost btn-circle mx-2"
+                  title={isDarkMode ? "Light mode" : "Dark mode"}
+                >
+                  {isDarkMode ? (
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.293 2.293a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zm2.828 4.293a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm2.828 4.293l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 111.414-1.414zM10 14a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.293 2.293l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 111.414-1.414zM3.707 5.707a1 1 0 010 1.414l-.707.707A1 1 0 11.586 5.293l.707-.707a1 1 0 011.414 0zM5 10a5 5 0 1110 0 5 5 0 01-10 0z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                  )}
+                </button>
                 <NavLink to="/SingUp">
                   <button className="button_css mx-3">Sing up</button>
                 </NavLink>

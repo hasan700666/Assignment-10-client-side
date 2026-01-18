@@ -3,12 +3,14 @@ import Update from "../Pages/Update";
 import { useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 import { FaStar } from "react-icons/fa6";
 
 const MyReviewTable = ({ data, setData, index, setLoader }) => {
   const navigate = useNavigate();
 
   const { user } = use(AuthContext);
+  const { isDarkMode } = use(ThemeContext);
 
   const hendleUpdate = () => {
     navigate(`/Update/${data._id}`);

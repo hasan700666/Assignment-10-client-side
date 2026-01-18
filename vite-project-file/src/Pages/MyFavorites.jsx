@@ -2,9 +2,11 @@ import React, { use, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MyFavoritesCard from "../Components/MyFavoritesCard";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 
 const MyFavorites = () => {
   const { user } = use(AuthContext);
+  const { isDarkMode } = use(ThemeContext);
 
   const [Data, setData] = useState([]);
 

@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import img from "../assets/images/logo.png";
 import { AuthContext } from "../Context/AuthContext/AuthContext";
+import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 import toast, { Toaster } from "react-hot-toast";
 
 const MyProfile = () => {
@@ -14,6 +15,7 @@ const MyProfile = () => {
     UpdateUser,
     UpdateNamePhotos,
   } = use(AuthContext);
+  const { isDarkMode } = use(ThemeContext);
   const [Update, setUpdate] = useState(false);
 
   const hendleUpdateProfile = () => {
@@ -53,9 +55,9 @@ const MyProfile = () => {
                 <div>
                   <div className="hero min-h-screen ">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                      <div className="card w-full shrink-0 shadow-2xl bg-[#ffeded]">
-                        <div className="card-body bg-[#ffeded] rounded-4xl pb-15">
-                          <h1 className="text-5xl font-bold m-10">
+                      <div className={`card w-full shrink-0 shadow-2xl ${isDarkMode ? 'bg-[#1a1a1a]' : 'bg-[#ffeded]'}`}>
+                        <div className={`card-body ${isDarkMode ? 'bg-[#1a1a1a]' : 'bg-[#ffeded]'} rounded-4xl pb-15`}>
+                          <h1 className={`text-5xl font-bold m-10 ${isDarkMode ? 'text-white' : 'text-black'}`}>
                             Update now!
                           </h1>
                           <form onSubmit={hendleSubmite}>
@@ -103,7 +105,7 @@ const MyProfile = () => {
               </div>
               <div>
                 <div className="min-h-screen  flex items-center justify-center p-6 ">
-                  <div className="max-w-5xl w-full  rounded-2xl shadow-lg p-8 grid md:grid-cols-2 gap-8 bg-[#ffeded]">
+                  <div className={`max-w-5xl w-full  rounded-2xl shadow-lg p-8 grid md:grid-cols-2 gap-8 ${isDarkMode ? 'bg-[#1a1a1a]' : 'bg-[#ffeded]'}`}>
                     {/* Left Side - Profile Info */}
                     <div className="flex flex-col items-center text-center justify-center">
                       <div className="w-70 rounded-4xl overflow-hidden border-10 border-[#df1e2e] mb-4">
@@ -113,7 +115,7 @@ const MyProfile = () => {
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <h2 className="text-2xl font-semibold">
+                      <h2 className={`text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'}`}>
                         {user?.displayName}
                       </h2>
                       <p className="text-[#ee1c25] text-sm font-medium">
@@ -123,7 +125,7 @@ const MyProfile = () => {
 
                     {/* Right Side - Bio & Details */}
                     <div className="">
-                      <h3 className="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">
+                      <h3 className={`text-xl font-semibold mb-4 pb-2 ${isDarkMode ? 'border-gray-600 text-white' : 'border-gray-700'} border-b`}>
                         Bio & other details
                       </h3>
 
@@ -131,31 +133,31 @@ const MyProfile = () => {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-3 text-sm">
                           <div>
-                            <p className="text-gray-400">My Name</p>
-                            <p>{user?.displayName}</p>
+                            <p className={isDarkMode ? 'text-gray-300' : 'text-gray-400'}>My Name</p>
+                            <p className={isDarkMode ? 'text-white' : 'text-black'}>{user?.displayName}</p>
                           </div>
                           <div>
-                            <p className="text-gray-400">My Email</p>
-                            <p>{user?.email}</p>
+                            <p className={isDarkMode ? 'text-gray-300' : 'text-gray-400'}>My Email</p>
+                            <p className={isDarkMode ? 'text-white' : 'text-black'}>{user?.email}</p>
                           </div>
 
                           <div>
-                            <p className="text-gray-400">Gender</p>
-                            <p>non</p>
+                            <p className={isDarkMode ? 'text-gray-300' : 'text-gray-400'}>Gender</p>
+                            <p className={isDarkMode ? 'text-white' : 'text-black'}>non</p>
                           </div>
                         </div>
                         <div className="space-y-3 text-sm">
                           <div>
-                            <p className="text-gray-400">Phone Number</p>
-                            <p>non</p>
+                            <p className={isDarkMode ? 'text-gray-300' : 'text-gray-400'}>Phone Number</p>
+                            <p className={isDarkMode ? 'text-white' : 'text-black'}>non</p>
                           </div>
                           <div>
-                            <p className="text-gray-400">Password</p>
-                            <p>***************</p>
+                            <p className={isDarkMode ? 'text-gray-300' : 'text-gray-400'}>Password</p>
+                            <p className={isDarkMode ? 'text-white' : 'text-black'}>***************</p>
                           </div>
                           <div>
-                            <p className="text-gray-400">My City or Region</p>
-                            <p>Moulvibazar, BD</p>
+                            <p className={isDarkMode ? 'text-gray-300' : 'text-gray-400'}>My City or Region</p>
+                            <p className={isDarkMode ? 'text-white' : 'text-black'}>Moulvibazar, BD</p>
                           </div>
                         </div>
                       </div>
