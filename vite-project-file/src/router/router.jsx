@@ -12,6 +12,8 @@ import AllReview from "../Pages/AllReview";
 import Update from "../Pages/Update";
 import MyFavorites from "../Pages/MyFavorites";
 import Dashboard from "../Pages/Dashboard";
+import AboutPage from "../Pages/AboutPage";
+import ContactPage from "../Pages/ContactPage";
 import Error from "../Pages/Error";
 
 export const router = createBrowserRouter([
@@ -65,11 +67,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/foodDetails/:id",
-        element: (
-          <ProtectedRoute>
-            <FoodDetails></FoodDetails>
-          </ProtectedRoute>
-        ),
+        element: <FoodDetails></FoodDetails>,
       },
       {
         path: "/SingUp",
@@ -94,6 +92,14 @@ export const router = createBrowserRouter([
             <MyFavorites></MyFavorites>
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/About",
+        Component: AboutPage,
+      },
+      {
+        path: "/Contact",
+        Component: ContactPage,
       },
       {
         path: "*",

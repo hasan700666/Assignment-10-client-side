@@ -17,7 +17,7 @@ import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 const SwiperComponent = () => {
   const { isDarkMode } = use(ThemeContext);
   return (
-    <div className={`p-20 ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"}`}>
+    <div className={`2xl:p-20 xl:p-17 lg:p-14 sm:p-10 p-6 ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"}`}>
       <Swiper
         //onSlideChange={() => console.log("slide change")}
         //onSwiper={(swiper) => console.log(swiper)}

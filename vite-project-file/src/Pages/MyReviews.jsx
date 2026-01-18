@@ -42,7 +42,7 @@ const MyReviews = () => {
 
   return (
     <div>
-      <div className="text-center m-10 text-6xl pt-10">
+      <div className="text-center m-10 text-6xl">
         <span className="text-[#bf1e2e]">My </span>
         <span className="text-[#ee1c25]"> Review</span>
       </div>

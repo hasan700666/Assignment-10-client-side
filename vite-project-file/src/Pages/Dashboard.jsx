@@ -72,8 +72,8 @@ const Dashboard = () => {
 
   return (
     <div
-      className={`min-h-screen py-10 ${
-        isDarkMode ? "bg-black text-white" : "bg-gray-50 text-black"
+      className={`min-h-screen pb-10 ${
+        isDarkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">

@@ -16,18 +16,14 @@ const FoodDetails = () => {
   useEffect(() => {
     fetch(`https://foodloverserver.vercel.app/publicFoodCollection/${id}`, {
       //--> id = 16
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
+      method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         setShowLoader(false);
       })
-      .catch((e) => {
-        //console.log(e)
-      });
+      .catch(() => {});
   }, []);
 
   if (loader) {

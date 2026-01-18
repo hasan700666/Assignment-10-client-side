@@ -29,6 +29,12 @@ const Footer = () => {
           <p>
             <NavLink to="/AddReview">ADD REVIEW</NavLink>
           </p>
+          <p>
+            <NavLink to="/About">ABOUT US</NavLink>
+          </p>
+          <p>
+            <NavLink to="/Contact">CONTACT</NavLink>
+          </p>
         </div>
 
         <div>
@@ -45,11 +51,15 @@ const Footer = () => {
         </div>
 
         <div>
-          <p>ABOUT US</p>
+          <p>QUICK LINKS</p>
           <p>
-            <a href="https://www.linkedin.com/in/mohammodhasanalmuttaki/">
-              CONTACT US
-            </a>
+            <NavLink to="/">HOME</NavLink>
+          </p>
+          <p>
+            <NavLink to="/AllReview">ALL REVIEWS</NavLink>
+          </p>
+          <p>
+            <NavLink to="/Dashboard">DASHBOARD</NavLink>
           </p>
         </div>
       </div>

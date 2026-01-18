@@ -6,6 +6,7 @@ import HomeCard from "../Components/HomeCard";
 import SwiperComponent from "../Components/SwiperComponent";
 import TopFoodBloggers from "../Components/topFoodBloggers";
 import About from "../Components/About";
+import HighlightStats from "../Components/HighlightStats";
 import Loader from "../Components/Loader";
 
 const Home = () => {
@@ -37,10 +38,16 @@ const Home = () => {
   }
 
   return (
-    <div className="my-20">
+    <div className="mb-20">
       <div>
         <SwiperComponent></SwiperComponent>
       </div>
+
+      {/* Highlight Stats Section */}
+      <div>
+        <HighlightStats></HighlightStats>
+      </div>
+
       <div>
         <div className="text-center m-10 text-6xl pt-10">
           <span className="text-[#bf1e2e]">Featured</span>

@@ -13,7 +13,7 @@ const Layout = () => {
         <Navbar></Navbar>
       </header>
 
-      <main className="flex-1 mt-18">
+      <main className="flex-1 pt-24">
         <Outlet></Outlet>
       </main>
 

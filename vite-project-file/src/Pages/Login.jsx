@@ -15,6 +15,8 @@ const Login = () => {
   const { SingUser, SingInByGoogle } = use(AuthContext);
   const { isDarkMode } = use(ThemeContext);
   const [sow, setSow] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -57,6 +59,13 @@ const Login = () => {
       });
   };
 
+  // Demo credentials auto-fill
+  const handleDemoLogin = () => {
+    setEmail("user@example.com");
+    setPassword("ExampleUser1234567");
+    toast.success("Demo credentials loaded! Click Login to continue.");
+  };
+
   return (
     <div className="flex justify-center items-center">
       <div>
@@ -82,6 +91,8 @@ const Login = () => {
                     className="input w-full rounded_css"
                     placeholder="Email"
                     name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
 
                   <label className="label">Password</label>
@@ -91,6 +102,8 @@ const Login = () => {
                       className="input rounded_css"
                       placeholder="Password"
                       name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <button
                       className="button_css rounded_css"
@@ -108,6 +121,13 @@ const Login = () => {
                     >
                       Forgot password?
                     </a>
+                  <button
+                    type="button"
+                    onClick={handleDemoLogin}
+                    className="btn btn-outline mt-3 w-full border-[#bf1e2e] text-[#bf1e2e] hover:bg-[#bf1e2e] hover:border-[#bf1e2e] hover:text-white"
+                  >
+                    🔑 Use Demo Credentials
+                  </button>
                   </div>
                   <button className="btn btn-neutral mt-4 button_css">
                     Login

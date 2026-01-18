@@ -46,7 +46,7 @@ const AllReview = () => {
 
   return (
     <div>
-      <div className="text-center m-10 text-6xl pt-10">
+      <div className="text-center mx-10 mb-10 text-6xl pt-10">
         <span className="text-[#bf1e2e]">Our All Food</span>
         <span className="text-[#ee1c25]"> Reviews</span>
       </div>

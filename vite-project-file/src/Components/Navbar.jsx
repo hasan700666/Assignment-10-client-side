@@ -14,24 +14,37 @@ const Navbar = () => {
       <NavLink to="/" className="mx-5 card_css ">
         Home
       </NavLink>
-      <NavLink to="/Dashboard" className="mx-5 card_css ">
-        Dashboard
-      </NavLink>
       <NavLink to="/AllReview" className="mx-5 card_css ">
         All Review
       </NavLink>
-      <NavLink to="/MyProfile" className="mx-5 card_css ">
-        My Profile
+      <NavLink to="/About" className="mx-5 card_css ">
+        About
       </NavLink>
-      <NavLink to="/AddReview" className="mx-5 card_css ">
-        Add Reviews
+      <NavLink to="/Contact" className="mx-5 card_css ">
+        Contact
       </NavLink>
-      <NavLink to={`/MyReviews/${user?.email}`} className="mx-5 card_css ">
-        My Reviews
-      </NavLink>
-      <NavLink to={`/MyFavorites/${user?.email}`} className="mx-5 card_css ">
-        My Favorites
-      </NavLink>
+      {user ? (
+        <>
+          <NavLink to="/Dashboard" className="mx-5 card_css ">
+            Dashboard
+          </NavLink>
+          <NavLink to="/MyProfile" className="mx-5 card_css ">
+            My Profile
+          </NavLink>
+          <NavLink to="/AddReview" className="mx-5 card_css ">
+            Add Reviews
+          </NavLink>
+          <NavLink to={`/MyReviews/${user?.email}`} className="mx-5 card_css ">
+            My Reviews
+          </NavLink>
+          <NavLink
+            to={`/MyFavorites/${user?.email}`}
+            className="mx-5 card_css "
+          >
+            My Favorites
+          </NavLink>
+        </>
+      ) : null}
     </>
   );
 
@@ -45,6 +58,12 @@ const Navbar = () => {
       </NavLink>
       <NavLink to="/AllReview" className="my-2">
         All Review
+      </NavLink>
+      <NavLink to="/About" className="my-2">
+        About
+      </NavLink>
+      <NavLink to="/Contact" className="my-2">
+        Contact
       </NavLink>
       <NavLink to="/MyProfile" className="my-2">
         My Profile
@@ -82,7 +101,7 @@ const Navbar = () => {
   //console.log(user?.photoURL);
 
   return (
-    <div className="">
+    <div className="fixed top-0 left-0 right-0 z-50">
       <div className="">
         <div className="navbar bg-base-100 shadow-sm bg_css">
           <div className="navbar-start">

@@ -39,11 +39,13 @@ const MyProfile = () => {
   };
 
   return (
-    <div>
+    <div
+      className={`min-h-screen py-10 ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}
+    >
       <div>
         <Toaster />
       </div>
-      <div>
+      <div className="max-w-6xl mx-auto px-4">
         {Update ? (
           <div>
             {loader ? (
@@ -52,47 +54,45 @@ const MyProfile = () => {
               </div>
             ) : (
               <>
-                <div>
-                  <div className="hero min-h-screen ">
-                    <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="hero min-h-screen">
+                  <div className="hero-content flex-col lg:flex-row-reverse">
+                    <div
+                      className={`card w-full shrink-0 shadow-2xl ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"}`}
+                    >
                       <div
-                        className={`card w-full shrink-0 shadow-2xl ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"}`}
+                        className={`card-body ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"} rounded-4xl pb-15`}
                       >
-                        <div
-                          className={`card-body ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"} rounded-4xl pb-15`}
+                        <h1
+                          className={`text-5xl font-bold m-10 ${isDarkMode ? "text-white" : "text-black"}`}
                         >
-                          <h1
-                            className={`text-5xl font-bold m-10 ${isDarkMode ? "text-white" : "text-black"}`}
-                          >
-                            Update now!
-                          </h1>
-                          <form onSubmit={hendleSubmite}>
-                            <fieldset className="fieldset">
-                              <label className="label">Name</label>
-                              <input
-                                type="name"
-                                className="input w-full"
-                                placeholder="Enter your Name"
-                                name="name"
-                              />
-                              <label className="label">Photo</label>
-                              <input
-                                type="text"
-                                className="input w-full"
-                                placeholder="Enter your photo-URL here"
-                                name="photo"
-                              />
+                          Update now!
+                        </h1>
+                        <form onSubmit={hendleSubmite}>
+                          <fieldset className="fieldset">
+                            <label className="label">Name</label>
+                            <input
+                              type="name"
+                              className="input w-full"
+                              placeholder="Enter your Name"
+                              name="name"
+                            />
+                            <label className="label">Photo</label>
+                            <input
+                              type="text"
+                              className="input w-full"
+                              placeholder="Enter your photo-URL here"
+                              name="photo"
+                            />
 
-                              <button className="button_css mt-5">Done</button>
-                            </fieldset>
-                          </form>
-                          <button
-                            className="button_css"
-                            onClick={hendleUpdateProfile}
-                          >
-                            Go to My Profile page
-                          </button>
-                        </div>
+                            <button className="button_css mt-5">Done</button>
+                          </fieldset>
+                        </form>
+                        <button
+                          className="button_css"
+                          onClick={hendleUpdateProfile}
+                        >
+                          Go to My Profile page
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -102,158 +102,163 @@ const MyProfile = () => {
           </div>
         ) : (
           <>
-            <div className="flex justify-center items-center">
-              <div>
-                <Toaster />
-              </div>
-              <div>
-                <img src={img} alt="" className="xl:w-70 lg:w-50 hidden" />
-              </div>
-              <div>
-                <div className="min-h-screen  flex items-center justify-center p-6 ">
-                  <div
-                    className={`max-w-5xl w-full  rounded-2xl shadow-lg p-8 grid md:grid-cols-2 gap-8 ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"}`}
+            {/* Header Banner */}
+
+            <div className="text-center text-6xl">
+              <span className="text-[#bf1e2e]">My</span>
+              <span className="text-[#ee1c25]"> Profile</span>
+            </div>
+
+            {/* Main Profile Card */}
+            <div className="min-h-screen flex items-center justify-center p-6">
+              <div
+                className={`max-w-5xl w-full rounded-3xl shadow-2xl p-8 grid md:grid-cols-2 gap-8 ${isDarkMode ? "bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]" : "bg-gradient-to-br from-white to-[#ffeded]"}`}
+              >
+                {/* Left Side - Profile Photo & Basic Info */}
+                <div className="flex flex-col items-center text-center justify-center">
+                  {/* Profile Photo with Animation */}
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#bf1e2e] to-[#ee1c25] rounded-3xl blur-lg opacity-50 animate-pulse"></div>
+                    <div className="relative w-72 h-72 rounded-3xl overflow-hidden border-4 border-[#bf1e2e] shadow-2xl">
+                      <img
+                        src={user?.photoURL}
+                        alt="profile"
+                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+
+                  {/* User Info */}
+                  <div>
+                    <h2
+                      className={`text-3xl font-bold mb-2 ${isDarkMode ? "text-white" : "text-gray-900"}`}
+                    >
+                      {user?.displayName}
+                    </h2>
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                      <span className="text-2xl">✨</span>
+                      <p className="text-[#ee1c25] text-sm font-medium">
+                        Verified User
+                      </p>
+                      <span className="text-2xl">✨</span>
+                    </div>
+                    <p
+                      className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
+                    >
+                      {user?.email}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right Side - Bio & Details */}
+                <div className="">
+                  <h3
+                    className={`text-2xl font-bold mb-6 pb-3 ${isDarkMode ? "border-gray-600 text-white" : "border-gray-300 text-gray-900"} border-b-2`}
                   >
-                    {/* Left Side - Profile Info */}
-                    <div className="flex flex-col items-center text-center justify-center">
-                      <div className="w-70 rounded-4xl overflow-hidden border-10 border-[#df1e2e] mb-4">
-                        <img
-                          src={user?.photoURL}
-                          alt="non"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h2
-                        className={`text-2xl font-semibold ${isDarkMode ? "text-white" : "text-black"}`}
+                    📋 Profile Details
+                  </h3>
+
+                  {/* Profile Cards */}
+                  <div className="space-y-4">
+                    {/* Name Card */}
+                    <div
+                      className={`p-4 rounded-xl ${
+                        isDarkMode ? "bg-gray-700" : "bg-white"
+                      } border-l-4 border-[#bf1e2e] shadow-md hover:shadow-lg transition`}
+                    >
+                      <p
+                        className={`text-xs font-semibold uppercase ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}
+                      >
+                        👤 Name
+                      </p>
+                      <p
+                        className={`text-lg font-semibold ${isDarkMode ? "text-white" : "text-gray-900"}`}
                       >
                         {user?.displayName}
-                      </h2>
-                      <p className="text-[#ee1c25] text-sm font-medium">
+                      </p>
+                    </div>
+
+                    {/* Email Card */}
+                    <div
+                      className={`p-4 rounded-xl ${
+                        isDarkMode ? "bg-gray-700" : "bg-white"
+                      } border-l-4 border-[#ee1c25] shadow-md hover:shadow-lg transition`}
+                    >
+                      <p
+                        className={`text-xs font-semibold uppercase ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}
+                      >
+                        📧 Email
+                      </p>
+                      <p
+                        className={`text-lg font-semibold break-all ${isDarkMode ? "text-white" : "text-gray-900"}`}
+                      >
                         {user?.email}
                       </p>
                     </div>
 
-                    {/* Right Side - Bio & Details */}
-                    <div className="">
-                      <h3
-                        className={`text-xl font-semibold mb-4 pb-2 ${isDarkMode ? "border-gray-600 text-white" : "border-gray-700"} border-b`}
+                    {/* Gender Card */}
+                    <div
+                      className={`p-4 rounded-xl ${
+                        isDarkMode ? "bg-gray-700" : "bg-white"
+                      } border-l-4 border-pink-500 shadow-md hover:shadow-lg transition`}
+                    >
+                      <p
+                        className={`text-xs font-semibold uppercase ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}
                       >
-                        Bio & other details
-                      </h3>
-
-                      {/* Split into two parts */}
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-3 text-sm">
-                          <div>
-                            <p
-                              className={
-                                isDarkMode ? "text-gray-300" : "text-gray-400"
-                              }
-                            >
-                              My Name
-                            </p>
-                            <p
-                              className={
-                                isDarkMode ? "text-white" : "text-black"
-                              }
-                            >
-                              {user?.displayName}
-                            </p>
-                          </div>
-                          <div>
-                            <p
-                              className={
-                                isDarkMode ? "text-gray-300" : "text-gray-400"
-                              }
-                            >
-                              My Email
-                            </p>
-                            <p
-                              className={
-                                isDarkMode ? "text-white" : "text-black"
-                              }
-                            >
-                              {user?.email}
-                            </p>
-                          </div>
-
-                          <div>
-                            <p
-                              className={
-                                isDarkMode ? "text-gray-300" : "text-gray-400"
-                              }
-                            >
-                              Gender
-                            </p>
-                            <p
-                              className={
-                                isDarkMode ? "text-white" : "text-black"
-                              }
-                            >
-                              non
-                            </p>
-                          </div>
-                        </div>
-                        <div className="space-y-3 text-sm">
-                          <div>
-                            <p
-                              className={
-                                isDarkMode ? "text-gray-300" : "text-gray-400"
-                              }
-                            >
-                              Phone Number
-                            </p>
-                            <p
-                              className={
-                                isDarkMode ? "text-white" : "text-black"
-                              }
-                            >
-                              non
-                            </p>
-                          </div>
-                          <div>
-                            <p
-                              className={
-                                isDarkMode ? "text-gray-300" : "text-gray-400"
-                              }
-                            >
-                              Password
-                            </p>
-                            <p
-                              className={
-                                isDarkMode ? "text-white" : "text-black"
-                              }
-                            >
-                              ***************
-                            </p>
-                          </div>
-                          <div>
-                            <p
-                              className={
-                                isDarkMode ? "text-gray-300" : "text-gray-400"
-                              }
-                            >
-                              My City or Region
-                            </p>
-                            <p
-                              className={
-                                isDarkMode ? "text-white" : "text-black"
-                              }
-                            >
-                              Moulvibazar, BD
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="md:block flex justify-center items-center">
-                        <button
-                          onClick={hendleUpdateProfile}
-                          className="button_css mt-20"
-                        >
-                          Update
-                        </button>
-                      </div>
+                        👥 Gender
+                      </p>
+                      <p
+                        className={`text-lg font-semibold ${isDarkMode ? "text-white" : "text-gray-900"}`}
+                      >
+                        Not specified
+                      </p>
                     </div>
+
+                    {/* Phone Card */}
+                    <div
+                      className={`p-4 rounded-xl ${
+                        isDarkMode ? "bg-gray-700" : "bg-white"
+                      } border-l-4 border-orange-500 shadow-md hover:shadow-lg transition`}
+                    >
+                      <p
+                        className={`text-xs font-semibold uppercase ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}
+                      >
+                        📱 Phone
+                      </p>
+                      <p
+                        className={`text-lg font-semibold ${isDarkMode ? "text-white" : "text-gray-900"}`}
+                      >
+                        Not provided
+                      </p>
+                    </div>
+
+                    {/* Location Card */}
+                    <div
+                      className={`p-4 rounded-xl ${
+                        isDarkMode ? "bg-gray-700" : "bg-white"
+                      } border-l-4 border-green-500 shadow-md hover:shadow-lg transition`}
+                    >
+                      <p
+                        className={`text-xs font-semibold uppercase ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}
+                      >
+                        📍 Location
+                      </p>
+                      <p
+                        className={`text-lg font-semibold ${isDarkMode ? "text-white" : "text-gray-900"}`}
+                      >
+                        Moulvibazar, Bangladesh
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Update Button */}
+                  <div className="mt-8 flex justify-center">
+                    <button
+                      onClick={hendleUpdateProfile}
+                      className="px-8 py-3 bg-gradient-to-r from-[#bf1e2e] to-[#ee1c25] text-white font-bold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                    >
+                      ✏️ Edit Profile
+                    </button>
                   </div>
                 </div>
               </div>
