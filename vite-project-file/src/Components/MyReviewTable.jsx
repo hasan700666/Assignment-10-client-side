@@ -27,7 +27,7 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
           "Content-Type": "application/json",
           authorization: `Bearer ${user.accessToken}`,
         },
-      }
+      },
     )
       .then((res) => res.json())
       .then((d) => {
@@ -41,7 +41,7 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
               "Content-Type": "application/json",
               authorization: `Bearer ${user.accessToken}`,
             },
-          }
+          },
         )
           .then((res) => res.json())
           .then((d) => {
@@ -55,7 +55,7 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
                   "Content-Type": "application/json",
                   authorization: `Bearer ${user.accessToken}`,
                 },
-              }
+              },
             )
               .then((res) => res.json())
               .then((d) => {
@@ -66,7 +66,7 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
                     headers: {
                       authorization: `Bearer ${user.accessToken}`,
                     },
-                  }
+                  },
                 )
                   .then((res) => res.json())
                   .then((d) => {
@@ -127,21 +127,24 @@ const MyReviewTable = ({ data, setData, index, setLoader }) => {
         <button onClick={hendleUpdate} className="button_css sm:mr-2 mr-0 my-1">
           Update
         </button>
-        <button className="button_css sm:ml-2 ml-0 my-1" onClick={() => document.getElementById("my_modal_1").showModal()}>Delete</button>
+        <button
+          className="button_css sm:ml-2 ml-0 my-1"
+          onClick={() => document.getElementById("my_modal_1").showModal()}
+        >
+          Delete
+        </button>
       </th>
       <div>
         <dialog id="my_modal_1" className="modal">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Hello!</h3>
-            <p className="py-4">
-              Are you Shore You Want To Delete this?
-            </p>
+            <p className="py-4">Are you Shore You Want To Delete this?</p>
             <div className="modal-action">
               <form method="dialog">
-                <button className="button_css mr-2" onClick={hendleDelete}>Delete</button>
-                <button className="button_css ml-2">
-                  Close
+                <button className="button_css mr-2" onClick={hendleDelete}>
+                  Delete
                 </button>
+                <button className="button_css ml-2">Close</button>
               </form>
             </div>
           </div>

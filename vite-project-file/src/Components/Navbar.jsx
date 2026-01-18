@@ -14,6 +14,9 @@ const Navbar = () => {
       <NavLink to="/" className="mx-5 card_css ">
         Home
       </NavLink>
+      <NavLink to="/Dashboard" className="mx-5 card_css ">
+        Dashboard
+      </NavLink>
       <NavLink to="/AllReview" className="mx-5 card_css ">
         All Review
       </NavLink>
@@ -36,6 +39,9 @@ const Navbar = () => {
     <>
       <NavLink to="/" className="my-2">
         Home
+      </NavLink>
+      <NavLink to="/Dashboard" className="my-2">
+        Dashboard
       </NavLink>
       <NavLink to="/AllReview" className="my-2">
         All Review
@@ -169,6 +175,9 @@ const Navbar = () => {
                       tabIndex="-1"
                       className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
                     >
+                      <NavLink to="/Dashboard">
+                        <li className="card_css my-1">Dashboard</li>
+                      </NavLink>
                       <NavLink to="/MyProfile">
                         <li className="card_css my-1">My Profile</li>
                       </NavLink>

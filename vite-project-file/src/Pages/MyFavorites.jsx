@@ -10,10 +10,9 @@ const MyFavorites = () => {
 
   const [Data, setData] = useState([]);
 
-  const [loader,setLoader] = useState(true)
+  const [loader, setLoader] = useState(true);
 
   const { email } = useParams();
-
 
   useEffect(() => {
     fetch(
@@ -23,13 +22,13 @@ const MyFavorites = () => {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
         },
-      }
+      },
     )
       .then((res) => res.json())
       .then((feachData) => {
         //console.log(feachData);
         setData(feachData);
-        setLoader(false)
+        setLoader(false);
       })
       .catch((e) => {
         //console.log(e);
@@ -54,7 +53,11 @@ const MyFavorites = () => {
         {Data.length ? (
           <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-5 mb-10">
             {Data?.map((data) => (
-              <MyFavoritesCard data={data} setData={setData} setLoader={setLoader}></MyFavoritesCard>
+              <MyFavoritesCard
+                data={data}
+                setData={setData}
+                setLoader={setLoader}
+              ></MyFavoritesCard>
             ))}
           </div>
         ) : (

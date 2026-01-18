@@ -11,6 +11,7 @@ import ProtectedRoute from "../Components/ProtectedRoute";
 import AllReview from "../Pages/AllReview";
 import Update from "../Pages/Update";
 import MyFavorites from "../Pages/MyFavorites";
+import Dashboard from "../Pages/Dashboard";
 import Error from "../Pages/Error";
 
 export const router = createBrowserRouter([
@@ -21,7 +22,8 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: () => fetch("https://foodloverserver.vercel.app/publicFoodCollectionHome"),  //-->id = 1
+        loader: () =>
+          fetch("https://foodloverserver.vercel.app/publicFoodCollectionHome"), //-->id = 1
       },
       {
         path: "/AddReview",
@@ -34,7 +36,16 @@ export const router = createBrowserRouter([
       {
         path: "/AllReview",
         Component: AllReview,
-        loader: () => fetch("https://foodloverserver.vercel.app/publicFoodCollection"),    //--> id = 2
+        loader: () =>
+          fetch("https://foodloverserver.vercel.app/publicFoodCollection"), //--> id = 2
+      },
+      {
+        path: "/Dashboard",
+        element: (
+          <ProtectedRoute>
+            <Dashboard></Dashboard>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/MyProfile",
@@ -75,7 +86,6 @@ export const router = createBrowserRouter([
             <Update></Update>
           </ProtectedRoute>
         ),
-          
       },
       {
         path: "/MyFavorites/:email",

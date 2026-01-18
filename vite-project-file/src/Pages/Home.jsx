@@ -6,6 +6,7 @@ import HomeCard from "../Components/HomeCard";
 import SwiperComponent from "../Components/SwiperComponent";
 import TopFoodBloggers from "../Components/topFoodBloggers";
 import About from "../Components/About";
+import Loader from "../Components/Loader";
 
 const Home = () => {
   const data = useLoaderData();
@@ -20,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     const fachData = async () => {
       const fachData = await fetch(
-        "https://foodloverserver.vercel.app/topFoodBloggers"
+        "https://foodloverserver.vercel.app/topFoodBloggers",
       );
       const res = await fachData.json();
       setLoader(false);
@@ -32,11 +33,7 @@ const Home = () => {
   //console.log(fachData);
 
   if (loader && loader2) {
-    return (
-      <div className="h-[100vh] flex justify-center items-center">
-        <span className="loading loading-infinity size-20"></span>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
@@ -80,11 +77,15 @@ const Home = () => {
           <span className="text-[#bf1e2e]">About </span>
           <span className="text-[#ee1c25]"> Us</span>
         </div>
-        <div className={`flex items-center ${isDarkMode ? 'bg-[#1a1a1a]' : 'bg-[#ffeded]'} lg:p-10 p-5 rounded-3xl justify-center flex-col`}>
+        <div
+          className={`flex items-center ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#ffeded]"} lg:p-10 p-5 rounded-3xl justify-center flex-col`}
+        >
           <div>
             <About></About>
           </div>
-          <div className={`lg:text-2xl md:text-xl sm:text-lg text-xs text-center p-5 ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}>
+          <div
+            className={`lg:text-2xl md:text-xl sm:text-lg text-xs text-center p-5 ${isDarkMode ? "text-gray-300" : "text-gray-800"}`}
+          >
             <span>Local Food Lovers Network</span> is a community-driven
             platform designed for people who love exploring and sharing great
             food. Whether it’s a hidden street-food stall, a cozy restaurant, or

@@ -24,7 +24,7 @@ const Update = () => {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
         },
-      }
+      },
     )
       .then((res) => res.json())
       .then((d) => {
@@ -98,7 +98,7 @@ const Update = () => {
           authorization: `Bearer ${user.accessToken}`,
         },
         body: JSON.stringify(dock),
-      }
+      },
     )
       .then((res) => res.json())
       .then((d) => {
@@ -111,7 +111,7 @@ const Update = () => {
               authorization: `Bearer ${user.accessToken}`,
             },
             body: JSON.stringify(dockWithEmail),
-          }
+          },
         )
           .then((res) => res.json())
           .then((d) => {
@@ -124,7 +124,7 @@ const Update = () => {
                   authorization: `Bearer ${user.accessToken}`,
                 },
                 body: JSON.stringify(dock),
-              }
+              },
             )
               .then((res) => res.json())
               .then((d) => {
@@ -139,8 +139,7 @@ const Update = () => {
             //console.log(e);
           });
       })
-      .catch((e) => {
-      });
+      .catch((e) => {});
   };
 
   return (

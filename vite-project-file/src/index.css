@@ -262,6 +262,76 @@ html.dark .card_des_css::after {
   background: #1a1a1a;
 }  
 
+/* Swiper Navigation & Pagination Styling */
+
+/* Light mode - black arrows and dots on light background */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000000 !important;
+  background-color: transparent !important;
+  transition: all 0.3s ease;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 28px !important;
+  font-weight: bold !important;
+  color: #000000 !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #bf1e2e !important;
+  transform: scale(1.2) !important;
+}
+
+/* Light mode - black pagination dots */
+.swiper-pagination-bullet {
+  background-color: #000000 !important;
+  opacity: 0.4 !important;
+  transition: all 0.3s ease !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #000000 !important;
+  opacity: 1 !important;
+}
+
+/* Dark mode - white arrows and dots on dark background */
+html.dark .swiper-button-next,
+html.dark .swiper-button-prev {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+html.dark .swiper-button-next::after,
+html.dark .swiper-button-prev::after {
+  color: #ffffff !important;
+}
+
+html.dark .swiper-button-next:hover,
+html.dark .swiper-button-prev:hover {
+  color: #ff6b6b !important;
+  transform: scale(1.2) !important;
+}
+
+html.dark .swiper-pagination-bullet {
+  background-color: #ffffff !important;
+  opacity: 0.4 !important;
+}
+
+html.dark .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}  
+
 /* .card_des_css:hover:before {
   background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
   animation: rotBGimg 3.5s linear infinite;

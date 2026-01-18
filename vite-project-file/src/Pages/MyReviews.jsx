@@ -19,7 +19,7 @@ const MyReviews = () => {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
         },
-      }
+      },
     )
       .then((res) => res.json())
       .then((d) => {
@@ -63,7 +63,12 @@ const MyReviews = () => {
               </thead>
               <tbody>
                 {data.map((item, index) => (
-                  <MyReviewTable data={item} index={index} setData={setData} setLoader={setLoader} />
+                  <MyReviewTable
+                    data={item}
+                    index={index}
+                    setData={setData}
+                    setLoader={setLoader}
+                  />
                 ))}
               </tbody>
             </table>

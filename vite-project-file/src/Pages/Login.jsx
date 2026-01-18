@@ -64,8 +64,12 @@ const Login = () => {
       </div>
       <div className="m-10">
         <div className="hero-content flex-col lg:flex-row-reverse ">
-          <div className={`card w-full shrink-0 shadow-2xl bg_css ${isDarkMode ? 'bg-[#2d2d2d]' : ''}`}>
-            <div className={`card-body bg_css rounded_css pb-15 ${isDarkMode ? 'bg-[#2d2d2d]' : ''}`}>
+          <div
+            className={`card w-full shrink-0 shadow-2xl bg_css ${isDarkMode ? "bg-[#2d2d2d]" : ""}`}
+          >
+            <div
+              className={`card-body bg_css rounded_css pb-15 ${isDarkMode ? "bg-[#2d2d2d]" : ""}`}
+            >
               <form onSubmit={hendleSubmit}>
                 {" "}
                 <fieldset className="fieldset">

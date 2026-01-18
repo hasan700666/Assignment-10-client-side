@@ -3,6 +3,7 @@ import { AuthContext } from "../Context/AuthContext/AuthContext";
 import { ThemeContext } from "../Context/ThemeContext/ThemeContext";
 import { useLoaderData } from "react-router";
 import Card from "../Components/Card";
+import Loader from "../Components/Loader";
 
 const AllReview = () => {
   const lodeData = useLoaderData();
@@ -17,11 +18,7 @@ const AllReview = () => {
   const { isDarkMode } = use(ThemeContext);
 
   if (loader && !lodeData && loader2) {
-    return (
-      <div className="h-[100vh] flex justify-center items-center">
-        <span className="loading loading-infinity size-20"></span>
-      </div>
-    );
+    return <Loader />;
   }
 
   const hendleSearch = (e) => {
@@ -30,7 +27,7 @@ const AllReview = () => {
 
     if (search) {
       fetch(
-        `https://foodloverserver.vercel.app/searchPublicFoodCollection?search=${search}` //--> id = 17
+        `https://foodloverserver.vercel.app/searchPublicFoodCollection?search=${search}`, //--> id = 17
       ) //--> id = 17
         .then((res) => res.json())
         .then((data) => {
@@ -55,7 +52,9 @@ const AllReview = () => {
       </div>
       <div className="flex justify-center items-center">
         <form className="">
-          <label className={`input border-2 border-[#bf1e2e] ${isDarkMode ? 'bg-[#2d2d2d] text-white' : 'bg-white'}`}>
+          <label
+            className={`input border-2 border-[#bf1e2e] ${isDarkMode ? "bg-[#2d2d2d] text-white" : "bg-white"}`}
+          >
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"
